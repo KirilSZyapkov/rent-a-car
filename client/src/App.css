@@ -1,0 +1,7 @@
+div .App  {
+    background-image: url("./images/banner.jpg");
+    padding: 100%;
+    position: fixed;
+    margin-top: -1%;
+    margin-left: -1%;
+}
