@@ -1,8 +1,14 @@
 .container  {
     background-image: url("../images/banner.jpg");
     position: fixed;
-    min-width: 99%;
-    min-height: 98%;
-    background-size: cover;
-    background-position: center;
+    min-width: 100%;
+    min-height: 100%;
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* height: 100%;  */
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
