@@ -1,13 +1,13 @@
 import styles from './Footer.module.css'
 
-export const Footer = (props) => {
+const Footer = (props) => {
     return (
         <div className={styles.footerBar}>
-            <div className={styles.footerContainer}>
+            
                 <img src="/logo.png" alt="logo" className={styles.footerLogo} />
-                <p>Copyright © 2021 Rent a Car Inc</p>
+                <p>© 2019 All Rights Reserved. Design by Kiril</p>
 
-            </div>
+            
         </div>
     )
 }

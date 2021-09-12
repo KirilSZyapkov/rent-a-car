@@ -1,0 +1,8 @@
+.banner_main {
+    background: url(../../images/banner.jpg);
+    position:absolute;
+   
+    top: 64px;
+    bottom: 75px;
+   
+}

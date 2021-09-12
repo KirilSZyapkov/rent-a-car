@@ -1,0 +1,5 @@
+.body_container {
+    border: 3px solid green;
+    height: 800px;
+    position: relative;
+}

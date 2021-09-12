@@ -3,10 +3,14 @@
     "",
     "\\client",
     "\\client\\public",
-    "\\client\\public\\images",
     "\\client\\src",
+    "\\client\\src\\Components",
+    "\\client\\src\\Components\\Footer",
+    "\\client\\src\\Components\\Header",
+    "\\client\\src\\Components\\HomePage",
+    "\\client\\src\\images",
     "\\server"
   ],
-  "SelectedNode": "\\client\\src\\App.js",
+  "SelectedNode": "\\client\\public\\favicon.ico",
   "PreviewInSolutionExplorer": false
 }
