@@ -6,5 +6,13 @@
     text-align: center;
     right:0;
     left:0;
+    
 }
 
+.footerBar img {
+    margin-top: 5px;
+}
+
+.footerBar p {
+    margin: 0 0 5px 0;
+}
