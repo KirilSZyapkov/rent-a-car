@@ -1,4 +1,5 @@
 import styles from './Nav.module.css';
+import {Link} from 'react-router-dom';
 
 const Nav = (props) => {
     return (
@@ -7,10 +8,10 @@ const Nav = (props) => {
                 <ul className={styles.nav_ul}>
 
                     <li>
-                        <p>Catalog</p>
+                        <Link to = "catalog"><p>Catalog</p></Link>
                     </li>
                     <li>
-                        <p>Add new carr</p>
+                        <p>Add new car</p>
                     </li>
                     <li>
                         <p>About Us</p>
