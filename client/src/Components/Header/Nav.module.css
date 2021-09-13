@@ -1,6 +1,6 @@
 .navBar {
     background-color: whitesmoke;
-    position: absolute;
+    /* position: absolute; */
     left:0;
     right: 0;
 
@@ -13,4 +13,9 @@
     margin: 10px;
     width: 100px;
     text-align: center;
+}
+
+.nav_ul {
+    margin-top: 0px;
+  margin-bottom: 0px;
 }
