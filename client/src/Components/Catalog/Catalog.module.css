@@ -1,0 +1,9 @@
+.container {
+    background: url(../../images/bg.jpg);
+    position: absolute;
+    top: 80px;
+    bottom: 60px;
+    width: 1430px;
+    padding: 5px;
+    
+}

@@ -1,21 +1,18 @@
 .navBar {
     background-color: whitesmoke;
-    /* position: absolute; */
+    
     left:0;
     right: 0;
-
+    
 }
 
-.nav_ul li {
+.nav_span p {
+  
     list-style-type: none;
     display: inline-block;
-    padding: 10px;
+    /* position: -ms-page; */
+    padding: 22px;
     margin: 10px;
-    width: 100px;
-    text-align: center;
-}
-
-.nav_ul {
-    margin-top: 0px;
-  margin-bottom: 0px;
+  
+    
 }

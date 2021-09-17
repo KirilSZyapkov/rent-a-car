@@ -1,5 +1,6 @@
 .body_container {
-    
-    height: 799px;
-    position: relative;
+    display: grid;
+    grid-template-columns: auto;
+    /* height: 799px;
+    position: relative; */
 }

@@ -1,8 +1,9 @@
 .footerBar {
-    background-color: aqua;
+    background-color: dimgray;
     position: absolute;
     bottom: 0;
-   
+    color: floralwhite;
+    
     text-align: center;
     right:0;
     left:0;
