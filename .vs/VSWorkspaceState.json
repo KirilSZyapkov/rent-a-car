@@ -5,9 +5,6 @@
     "\\client\\public",
     "\\client\\src",
     "\\client\\src\\Components",
-    "\\client\\src\\Components\\Footer",
-    "\\client\\src\\Components\\Header",
-    "\\client\\src\\Components\\HomePage",
     "\\client\\src\\images",
     "\\server"
   ],

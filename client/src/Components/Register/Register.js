@@ -1,6 +1,7 @@
 import styles from './Register.module.css';
 
-const Register = (props) => {
+const Register = ({match}) => {
+
     return (
         <div>
             <h1>Register</h1>

@@ -1,24 +1,35 @@
 import styles from './Nav.module.css';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Nav = (props) => {
     return (
-        <div className={styles.navBar}>
-
-            <span className={styles.nav_span}>
-                <Link to="/catalog"><p>Catalog</p></Link>
-                <Link to="catalog"><p>Add new car</p></Link>
-                <Link to="/about-us"><p>About Us</p></Link>
-
-                <Link to="/user/login"><p id={styles.login}>Login</p></Link>
-                <Link to="/user/register"><p id={styles.register}>Register</p></Link>
-                <Link to="#"><p id={styles.user}>Hello User</p></Link>
-                <Link to="#"><p id={styles.logout}>Logout</p></Link>
-
-            </span>
-            
-        </div>
-        
+        <header>
+            <section className={styles.navbar_logo}>
+               <Link to="/"> <img src="/lg.png" alt="logo"/></Link>
+            </section>
+            <section className={styles.navbar_links}>
+                <ul>
+                    <Link to="/catalog">
+                        <li>Catalog</li>
+                    </Link>
+                    <Link to="/contacts">
+                        <li>About Us</li>
+                    </Link>
+                    <Link to="/user/login">
+                        <li>Login</li>
+                    </Link>
+                    <Link to="/user/register">
+                        <li>Register</li>
+                    </Link>
+                    <Link to="#">
+                        <li>User</li>
+                    </Link>
+                    <Link to="#">
+                        <li>Logout</li>
+                    </Link>
+                </ul>
+            </section>
+        </header>
     )
 }
 

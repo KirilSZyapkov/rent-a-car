@@ -1,18 +1,14 @@
-.banner_main {
-    background: url(../../images/banner.jpg);
-    position: absolute;
-   
-    top: 80px;
-    bottom: 60px;
-   text-align:center;
-   color:white;
+.landing_page{
+    line-height: 1.5;
+    text-align: center;
 }
 
-.section {
-    position: relative;
-    margin: auto;
-    margin-top: 50px;
-    
-    height: 500px;
-    overflow: auto;
+.content_container{
+
+    margin:0px auto 80px;
+   padding: 25px;
+    width: 800px;
+}
+.container_img{
+    margin-bottom: 35px;
 }
