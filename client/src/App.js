@@ -12,6 +12,7 @@ import Catalog from './Components/Catalog/Catalog';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Contacts from "./Components/AboutUs/Contacts";
+import CreatNewCar from './Components/CreatCar/CreatNewCar';
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
 
                     <Route path="/" exact component={HomePage}/>
                     <Route path="/catalog" component={Catalog}/>
+                    <Route path="/create" component={CreatNewCar}/>
                     <Route path="/user/login" component={Login}/>
                     <Route path="/user/register" component={Register}/>
                     <Route path="/contacts" component={Contacts}/>

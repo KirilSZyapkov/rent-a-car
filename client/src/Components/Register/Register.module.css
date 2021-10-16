@@ -1,9 +1,9 @@
 /* style="border:1px solid #ccc" */
 
 .form_register{
-    /* color: #E7E9EB; */
+    /* color: wheat; */
     max-width: 700px;
-    margin-bottom: 160px;
+    margin-bottom: 20px;
     
     
 }
@@ -14,14 +14,14 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    padding: 55px;
+    padding: 45px;
     justify-content: center;
     
     
 }
 
 .cancelbtn, .signupbtn{
-    width: 350px;
+    width: 335px;
     height: 30px;
     border: none;
     font-size: 15px;
@@ -35,4 +35,22 @@
 
 .signupbtn{
     background-color: #1EB37C;
+}
+
+.container_login{
+    text-align: center;
+    color: wheat;
+}
+
+.container_login a{
+    color: red;
+}
+
+.form_register {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    margin: 7px 0px;
+    border-radius: 20px;
+    border: none;
 }

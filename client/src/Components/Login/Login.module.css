@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     padding: 50px;
-    margin: 68px 100px 180px 150px;
+    margin: 68px 100px 140px 150px;
     opacity: 0.8;
     background-color: #F1F1F1;
     border-radius: 12px;
@@ -21,7 +21,7 @@
     
 }
 
-input[type=text], input[type=password] {
+.form_login {
     width: 100%;
     padding: 15px;
     font-size: 16px;
@@ -45,5 +45,7 @@ input[type=text], input[type=password] {
 .signupbtn{
     background-color: #1EB37C;
 }
-/* style="margin-bottom:15px" */
-/* style="color:dodgerblue" */
+
+.container_signin{
+    text-align: end;
+}
