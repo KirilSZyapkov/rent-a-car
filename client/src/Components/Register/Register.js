@@ -1,11 +1,34 @@
 import styles from './Register.module.css';
+import { Link } from 'react-router-dom';
 
-const Register = ({match}) => {
+const Register = ({ match }) => {
 
     return (
-        <div>
-            <h1>Register</h1>
-        </div>
+        <section className={styles.register_container}>
+            <form className={styles.form_register}>
+
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" />
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" />
+
+                <label for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" />
+
+
+                <p>By creating an account you agree to our <a href="javascript:void(0)">Terms & Privacy</a>.</p>
+
+                <div className={styles.register_clearfix}>
+                    <Link to="/"><button type="button" className={styles.cancelbtn}>Cancel</button></Link>
+                    <button type="submit" className={styles.signupbtn}>Sign Up</button>
+                </div>
+
+            </form>
+        </section>
     )
 }
 

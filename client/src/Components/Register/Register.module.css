@@ -1,0 +1,38 @@
+/* style="border:1px solid #ccc" */
+
+.form_register{
+    /* color: #E7E9EB; */
+    max-width: 700px;
+    margin-bottom: 160px;
+    
+    
+}
+
+.register_container{
+    display: flex;
+    background-image: url('../../images/registerCars.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 55px;
+    justify-content: center;
+    
+    
+}
+
+.cancelbtn, .signupbtn{
+    width: 350px;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.cancelbtn{
+    background-color: #F5564B;
+
+}
+
+.signupbtn{
+    background-color: #1EB37C;
+}
