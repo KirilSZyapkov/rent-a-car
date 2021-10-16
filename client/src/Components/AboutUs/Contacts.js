@@ -13,7 +13,7 @@ class Contacts extends Component {
                 <div className={styles.about_section}>
                     <h1>About Us Page</h1>
                     <p>Some text about who we are and what we do.</p>
-                    <p>Resize the browser window to see that this page is responsive by the way.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, minus.</p>
                 </div>
 
                 <h2 className={styles.our_team}>Our Team</h2>
@@ -35,7 +35,7 @@ class Contacts extends Component {
 
                     <div className={styles.column}>
                         <div className={styles.card}>
-                            <img src="personTwo.jpg" alt="Mike"/>
+                            <img src="im2.jpg" alt="Mike"/>
                             <div className={styles.container}>
                                 <h2>Mike Ross</h2>
                                 <p className={styles.title}>Art Director</p>
