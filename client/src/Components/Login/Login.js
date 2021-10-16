@@ -19,8 +19,8 @@ const Login = ({ match }) => {
                 <p>By creating an account you agree to our <a href="javascript:void" >Terms & Privacy</a>.</p>
 
                 <div className="clearfix">
-                    <Link to="/"><button type="button" className="cancelbtn">Cancel</button></Link>
-                    <button type="submit" className="signupbtn">Sign Up</button>
+                    <Link to="/"><button type="button" className={styles.cancelbtn}>Cancel</button></Link>
+                    <button type="submit" className={styles.signupbtn}>Sign Up</button>
                 </div>
 
             </form>
