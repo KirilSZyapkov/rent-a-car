@@ -1,7 +1,7 @@
 
 .container{
    
-    width: 1000px;
+    max-width: 1000px;
  
     margin: auto;
     margin-bottom: 20px;
@@ -9,11 +9,8 @@
 
 .form_article_container{
     display: flex;
-    
     flex-wrap: wrap;
-    /* justify-content: space-between; */
-    /* flex-grow: 1; */
-    
+        
 }
 
 
@@ -33,8 +30,8 @@
 }
 
 .cancelbtn, .createbtn{
-    width: 300px;
-    
+    width: 35%;
+    cursor: pointer;
     height: 40px;
     border: none;
     font-size: 15px;
@@ -53,6 +50,15 @@
 .clearfix{
     margin-top: 20px;
     display: flex;
-    width: 100%;
-    justify-content: space-around;
+    flex-grow: 1;
+     justify-content: space-around;
+    max-width: 1000px;
+    
+}
+
+.clearfix a{
+    background-color: #F5564B;
+    width: 35%;
+    text-align: center;
+    border-radius: 2px;
 }
