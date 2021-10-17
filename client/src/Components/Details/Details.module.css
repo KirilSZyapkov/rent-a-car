@@ -1,0 +1,26 @@
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+
+.details_container{
+    border: 1px solid lightgrey;
+    width: 60%;
+    height: 120%;
+    margin: auto;
+}
+.img_container{
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+}
+img{
+    width: 60%;
+    
+
+}
+.details_head_container{
+   text-align: center;
+}
+
+.specification_details_container{
+    text-align: center;
+}

@@ -10,16 +10,16 @@ const Register = ({ match }) => {
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account.</p>
 
-                <label for="username"><b>User Name</b></label>
+                <label htmlFor="username"><b>User Name</b></label>
                 <input className={styles.form_register} type="text" placeholder="Enter User Name" name="username" />
 
-                <label for="email"><b>Email</b></label>
+                <label htmlFor="email"><b>Email</b></label>
                 <input className={styles.form_register} type="e-mail" placeholder="Enter Email" name="email" />
 
-                <label for="password"><b>Password</b></label>
+                <label htmlFor="password"><b>Password</b></label>
                 <input className={styles.form_register} type="password" placeholder="Enter Password" name="password" />
 
-                <label for="psw-repeat"><b>Repeat Password</b></label>
+                <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
                 <input className={styles.form_register} type="password" placeholder="Repeat Password" name="psw-repeat" />
 
 

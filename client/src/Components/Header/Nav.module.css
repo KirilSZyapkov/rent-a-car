@@ -1,14 +1,15 @@
 header {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
     background-color: #aaa;
     height: 100%;
     align-items: center;
     padding: 15px;
+    width: 100%;
 }
 
-li {
+.navbar_links ul li {
     display: inline-block;
 
 }

@@ -10,10 +10,10 @@ const Login = ({ match }) => {
 
                 <hr />
 
-                <label for="email"><b>Email</b></label>
+                <label htmlFor="email"><b>Email</b></label>
                 <input className={styles.form_login} type="text" placeholder="Enter Email" name="email" />
 
-                <label for="psw"><b>Password</b></label>
+                <label htmlFor="psw"><b>Password</b></label>
                 <input className={styles.form_login} type="password" placeholder="Enter Password" name="psw" />
 
                 <p>By creating an account you agree to our <a href="javascript:void" >Terms & Privacy</a>.</p>

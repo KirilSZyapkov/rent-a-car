@@ -2,8 +2,6 @@ import {Switch, Route} from 'react-router-dom';
 
 
 import './App.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 import Nav from './Components/Header/Nav';
 import Footer from './Components/Footer/Footer';
@@ -13,6 +11,7 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Contacts from "./Components/AboutUs/Contacts";
 import CreatNewCar from './Components/CreatCar/CreatNewCar';
+import Details from './Components/Details/Details';
 
 function App() {
     return (
@@ -23,6 +22,7 @@ function App() {
                 <Switch>
 
                     <Route path="/" exact component={HomePage}/>
+                    <Route exact path="/catalog/details/:id" component={Details}/> 
                     <Route path="/catalog" component={Catalog}/>
                     <Route path="/create" component={CreatNewCar}/>
                     <Route path="/user/login" component={Login}/>
