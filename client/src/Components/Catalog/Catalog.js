@@ -1,11 +1,15 @@
 import styles from './Catalog.module.css';
-
+import Card from './CatalogCard/Card';
 
 const Catalog = (props) => {
     return (
-        <div>
-            Catalog
-        </div>
+        <section className={styles.catalog_container}>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+                        
+        </section>
 
     )
 }

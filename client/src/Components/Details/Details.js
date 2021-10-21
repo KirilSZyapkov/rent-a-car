@@ -1,5 +1,5 @@
 import styles from './Details.module.css';
-
+import {Link} from 'react-router-dom';
 
 function Details({
     match
@@ -32,7 +32,7 @@ function Details({
                     <h1>Price: 150€</h1>
 
                     <button className={styles.rentbtn}>Rent</button>
-                    <button className={styles.backbtn}>Back</button>
+                    <Link to="/catalog"><button className={styles.backbtn}>Back</button></Link>
                     <button className={styles.deletebtn}>Delete</button>
                     
                 </footer>

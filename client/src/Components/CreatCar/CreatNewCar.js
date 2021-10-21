@@ -2,7 +2,7 @@ import styles from './CreatNewCar.module.css';
 import { Link } from 'react-router-dom';
 
 function CreatNewCar(props) {
-    console.log(props);
+    
     return (
         <section className={styles.container}>
             <form>
