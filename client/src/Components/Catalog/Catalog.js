@@ -6,9 +6,7 @@ const Catalog = (props) => {
         <section className={styles.catalog_container}>
             <Card/>
             <Card/>
-            <Card/>
-            <Card/>
-                        
+                
         </section>
 
     )
