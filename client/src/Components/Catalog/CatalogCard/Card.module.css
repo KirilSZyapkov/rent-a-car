@@ -1,9 +1,10 @@
 .card_container{
-    border: 1px solid green;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     height: 480px;
     padding: 10px;
     margin: 10px;
+    background-color: #FFFFFF;
 }
 
 .card_img{

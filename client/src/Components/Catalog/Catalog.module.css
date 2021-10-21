@@ -1,7 +1,9 @@
 .catalog_container{
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid red;
+    /* background-image: url("../../images/catalogBacground.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 700px;
     padding: 70px;
     
