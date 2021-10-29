@@ -33,3 +33,14 @@ header {
     text-decoration: underline;
     color: black;
 }
+
+@media all and (max-width: 960px) {
+    .navbar_logo{
+        display: none;
+    }
+
+    .navbar_links ul{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
