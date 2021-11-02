@@ -19,8 +19,8 @@ const Register = ({ match }) => {
                 <label htmlFor="password"><b>Password</b></label>
                 <input className={styles.form_register} type="password" placeholder="Enter Password" name="password" />
 
-                <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-                <input className={styles.form_register} type="password" placeholder="Repeat Password" name="psw-repeat" />
+                <label htmlFor="rePass"><b>Repeat Password</b></label>
+                <input className={styles.form_register} type="password" placeholder="Repeat Password" name="rePass" />
 
 
                 <p>By creating an account you agree to our <a href="javascript:void(0)">Terms & Privacy</a>.</p>

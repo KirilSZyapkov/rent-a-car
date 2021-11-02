@@ -1,6 +1,7 @@
 const { model, Schema } = require('mongoose');
 
 const schema = new Schema({
+    _owner: { type: String, required: true },
     carModel: { type: String, required: true, minlength: [4, 'The model should be at least 4 characters long and should consist only english letters and digits!'] },
     price: { type: Number, required: true },
     imgURL: { type: String, required: true, match: [/^https?:\/\//, 'Image link must start with http(s)://'] },
@@ -8,7 +9,8 @@ const schema = new Schema({
     fuelType: { type: String, required: true },
     transmition: { type: String, required: true },
     luggage: { type: Number, required: true },
-    _isFree: { type: String, default: true }
+    _isFree: { type: String, default: true },
+    rentedBy: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
 
 module.exports = model('Item', schema);
