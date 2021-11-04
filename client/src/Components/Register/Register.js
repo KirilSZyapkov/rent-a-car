@@ -3,9 +3,35 @@ import { Link } from 'react-router-dom';
 
 const Register = ({ match }) => {
 
+    async function register(e) {
+        e.preventDefault();
+        const target = e.target;
+        const userName = target.username.value;
+        const email = target.email.value;
+        const password = target.password.value;
+        const rePass = target.rePass.value;
+
+        const data = {
+            userName: userName,
+            email: email,
+            password: password,
+            rePass: rePass
+        }
+
+        const respons = await fetch('http://localhost:5000/user/register', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+       
+        console.log(respons.userName);
+    }
+
     return (
         <section className={styles.register_container}>
-            <form className={styles.form_register}>
+            <form className={styles.form_register} onSubmit={register}>
 
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account.</p>

@@ -3,9 +3,30 @@ import { Link } from 'react-router-dom';
 
 const Login = ({ match }) => {
 
+    async function login(e) {
+        e.preventDefault();
+        const target = e.target;
+        const email = target.email.value;
+        const password = target.password.value;
+
+        const data = {
+            email: email,
+            password: password
+        }
+
+        const respons = await fetch('http://localhost:5000/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        console.log(respons);
+    }
+
     return (
         <section className={styles.form_section}>
-            <form className={styles.form_container}>
+            <form className={styles.form_container} onSubmit={login}>
                 <h1>Login</h1>
 
                 <hr />
@@ -13,8 +34,8 @@ const Login = ({ match }) => {
                 <label htmlFor="email"><b>Email</b></label>
                 <input className={styles.form_login} type="text" placeholder="Enter Email" name="email" />
 
-                <label htmlFor="psw"><b>Password</b></label>
-                <input className={styles.form_login} type="password" placeholder="Enter Password" name="psw" />
+                <label htmlFor="password"><b>Password</b></label>
+                <input className={styles.form_login} type="password" placeholder="Enter Password" name="password" />
 
                 <p>By creating an account you agree to our <a href="javascript:void(0)" >Terms & Privacy</a>.</p>
 

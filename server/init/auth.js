@@ -27,12 +27,12 @@ module.exports = () => (req, res, next) => {
 
 };
 
-async function login(userName, password) {
+async function login(email, password) {
 
-    if (userName === '' || password === '') {
+    if (email === '' || password === '') {
         throw new Error('All inputs are required!');
     }
-    const user = await User.findOne({ userName: UserName }).lean();
+    const user = await User.findOne({ email: email }).lean();
 
     if (user) {
         const itMatch = await bcrypt.compare(password, user.hashPassword);
@@ -85,10 +85,10 @@ function readToken(req, res) {
 
     const token = req.cookies[COOKIE_NAME];
 
-    if (toke) {
+    if (token) {
         try {
             const data = jwt.verify(token, SECRET_KEY);
-
+            req.user = data;
         } catch (err) {
             res.clearCookie(COOKIE_NAME);
             return false;

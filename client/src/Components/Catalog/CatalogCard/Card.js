@@ -11,7 +11,7 @@ function Card() {
                 <h1>Price for Rent</h1>
                 <p className={styles.card_prie}>$19.99</p>
                 <p className={styles.card_description}>Some text about the jeans.Super slim and comfy lorem ipsum lorem jeansum.Lorem jeamsun denim lorem jeansum.</p> 
-                <Link to="/catalog/details/:id"><p><button>Add to Cart</button></p></Link>
+                <Link to="/catalog/details/:id"><p><button>Details</button></p></Link>
             </div>
         </article>
     )

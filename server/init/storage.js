@@ -61,6 +61,7 @@ async function rent(carId, userId) {
     car.rentedBy.push(userId);
 
     await car.save();
+    return car;
 };
 
 module.exports = init;
