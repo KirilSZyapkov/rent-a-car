@@ -20,7 +20,7 @@ async function request(url, options) {
         }
 
     } catch (err) {
-        alert(err);
+        // alert(err);
         
         throw err;
     }
@@ -63,7 +63,7 @@ export async function del(url) {
 
 export async function login(data) {
     const result = await post('/user/login', data);
-
+    
     sessionStorage.setItem('authToken', result.accessToken);
     sessionStorage.setItem('userName', result.userName);
     sessionStorage.setItem('userId', result._id);
@@ -73,11 +73,10 @@ export async function login(data) {
 
 export async function register(data) {
     const result = await post('/user/register', data);
-
+    
     sessionStorage.setItem('authToken', result.accessToken);
     sessionStorage.setItem('userName', result.userName);
     sessionStorage.setItem('userId', result._id);
 
     return result;
 }
-

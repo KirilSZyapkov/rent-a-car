@@ -1,19 +1,13 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './Nav.module.css';
 import { Link } from 'react-router-dom';
 
-const Nav = (props) => {
-
-    const[user, setUser] = useState(null);
-
-    useEffect(()=>{
-        setUser(sessionStorage.getItem('userName'));
-
-    }, [user]);
-
-    // const userName = sessionStorage.getItem('userName');
-
+const Nav = ({
+    user,
+    
+}) => {
+    
     return (
         <header>
             <section className={styles.navbar_logo}>
@@ -33,7 +27,7 @@ const Nav = (props) => {
                                 <li>About Us</li>
                             </Link>
                             <Link to="#">
-                                <li>User</li>
+                                <li>{user}</li>
                             </Link>
                             <Link to="#">
                                 <li>Logout</li>

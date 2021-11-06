@@ -1,10 +1,11 @@
 import styles from './Register.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import * as api from '../../Services/api'
 
-const Register = ({ match, history }) => {
+const Register = ({ loggin }) => {
 
+    const history = useHistory();
     async function register(e) {
         e.preventDefault();
         const target = e.target;
@@ -21,11 +22,12 @@ const Register = ({ match, history }) => {
         }
         try {
             await api.register(data);
+            loggin();
             history.push('/catalog');
 
         } catch (err) {
-            // alert(err);
-            console.log(err);
+            alert(err.message);
+            
         }
     }
 

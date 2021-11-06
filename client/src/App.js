@@ -1,5 +1,6 @@
-import {Switch, Route} from 'react-router-dom';
-
+import { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import './App.css';
 
@@ -14,30 +15,55 @@ import CreatNewCar from './Components/CreatCar/CreatNewCar';
 import Details from './Components/Details/Details';
 import Edit from './Components/Edit/Edit';
 
-function App() {
-    return (
-        <div className="App">
-            <div className="body_container">
-                <Nav/>
 
-                <Switch>
+class App extends Component {
 
-                    <Route path="/" exact component={HomePage}/>
-                    <Route exact path="/catalog/details/:id" component={Details}/> 
-                    <Route exact path="/catalog/edit/:id" component={Edit}/> 
-                    <Route path="/catalog" component={Catalog}/>
-                    <Route path="/create" component={CreatNewCar}/>
-                    <Route path="/user/login" component={Login}/>
-                    <Route path="/user/register" component={Register}/>
-                    <Route path="/contacts" component={Contacts}/>
+    constructor(props) {
+        super(props);
 
-                </Switch>
+        this.state = { isAuthenticated: sessionStorage.getItem('userName') }
+    }
 
-                <Footer/>
+    loggin = () => {
+        this.setState({ isAuthenticated: sessionStorage.getItem('userName') });
+    }
+
+    loggout = () => {
+        this.setState({ isAuthenticated: sessionStorage.getItem('userName') });
+    }
+
+    render() {
+        const { isAuthenticated } = this.state;
+                
+        return (
+            <div className="App">
+
+                <div className="body_container">
+                    <Nav user={isAuthenticated} />
+
+                    <Switch>
+
+                        <Route path="/" exact component={HomePage} />
+                        <Route exact path="/catalog/details/:id" component={Details} />
+                        <Route exact path="/catalog/edit/:id" component={Edit} />
+                        <Route path="/catalog" component={Catalog} />
+                        <Route path="/create" component={CreatNewCar} />
+                        <Route path="/user/login">
+                            <Login loggin={this.loggin} />
+                        </Route>
+                        <Route path="/user/register" >
+                            <Register loggin={this.loggin} />
+                        </Route>
+                        <Route path="/contacts" component={Contacts} />
+
+                    </Switch>
+
+                    <Footer />
+                </div>
+
             </div>
-
-        </div>
-    );
+        );
+    }
 }
 
 export default App;

@@ -1,10 +1,10 @@
 import styles from './Login.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import * as api from '../../Services/api';
 
-const Login = ({ match, history }) => {
-
+const Login = ({ loggin }) => {
+    const history = useHistory();
     async function login(e) {
         e.preventDefault();
         const target = e.target;
@@ -18,9 +18,12 @@ const Login = ({ match, history }) => {
 
         try {
             await api.login(data);
-            history.push('/catalog');
+            loggin();
+            history.push('/');
         } catch (err) {
-            // console.log(err);
+
+            alert(err.message);
+
         }
 
     }
