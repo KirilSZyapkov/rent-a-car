@@ -46,7 +46,8 @@ function getOptions(method = 'get', body) {
 }
 
 export async function get(url) {
-    return await request(host + url, getOptions());
+    const data = await request(host + url, getOptions());
+    return data;
 };
 
 export async function put(url, data) {

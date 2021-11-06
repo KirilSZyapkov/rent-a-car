@@ -22,19 +22,19 @@ async function getById(id) {
     return await Model.findById(id).populate('rentedBy').lean();
 };
 
-async function create(data, id) {
+async function create(data) {
     if (data.carModel === '' || data.price === '' || data.imgURL === '' || data.numSeats === '' || data.fuelType === '' || data.transmition === '' || data.luggage === '') {
         throw new Error('All fields are required!');
     };
 
     const car = new Model({
-        owner: id,
+        _owner: data.userId,
         carModel: data.carModel,
         price: data.price,
         imgURL: data.imgURL,
-        numSeats: data.numSeats,
+        numSeats: data.numberseats,
         fuelType: data.fuelType,
-        transmition: data.transmition,
+        transmition: data.transmitiontype,
         luggage: data.luggage
     });
 

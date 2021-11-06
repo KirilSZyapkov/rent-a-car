@@ -1,11 +1,48 @@
 import styles from './CreatNewCar.module.css';
 import { Link } from 'react-router-dom';
+import * as api from '../../Services/api';
 
-function CreatNewCar(props) {
-    
+function CreatNewCar({ history }) {
+
+    async function createNewCar(e) {
+        e.preventDefault();
+        const userId = sessionStorage.getItem('userId');
+        const token = sessionStorage.getItem('authToken');
+        const target = e.target;
+        const carModel = target.carmodel.value.trim();
+        const price = Number(target.price.value.trim());
+        const imgURL = target.imgURL.value.trim();
+        const numberseats = Number(target.numberseats.value.trim());
+        const fuelType = target.fuelType.value.trim();
+        const transmitiontype = target.transmitiontype.value.trim();
+        const luggage = Number(target.luggage.value.trim());
+
+        const body = {
+            userId,
+            carModel,
+            price,
+            imgURL,
+            numberseats,
+            fuelType,
+            transmitiontype,
+            luggage
+        }
+
+        if (!token) {
+            sessionStorage.clear();
+            history.push('/user/register');
+        }
+
+        try {
+            await api.post('/create',body)
+        } catch (err) {
+            alert(err.message);
+        }
+    }
+
     return (
         <section className={styles.container}>
-            <form>
+            <form onSubmit={createNewCar}>
                 <article className={styles.form_heading}>
                     <h1>Creat New Car</h1>
                     <p>Please fill in this form to create new car.</p>
@@ -25,7 +62,7 @@ function CreatNewCar(props) {
                         <input className={styles.form_input} type="text" placeholder="Enter number of seats" name="numberseats" />
 
                         <label htmlFor="fultype"><b>Fuel</b></label>
-                        <input className={styles.form_input} type="text" placeholder="Enter fuel type" name="fueltype" />
+                        <input className={styles.form_input} type="text" placeholder="Enter fuel type" name="fuelType" />
 
                         <label htmlFor="transmitiontype"><b>Transmition type</b></label>
                         <input className={styles.form_input} type="text" placeholder="Enter transmition type" name="transmitiontype" />
@@ -35,7 +72,7 @@ function CreatNewCar(props) {
                     </section>
                     <section className={styles.clearfix}>
                         <Link to="/catalog"><button type="button" className={styles.cancelbtn}>Cancel</button></Link>
-                       
+
                         <button type="submit" className={styles.createbtn}>Create</button>
                     </section>
                 </article>

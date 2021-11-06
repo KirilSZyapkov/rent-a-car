@@ -5,25 +5,25 @@ router.get('/catalog', async (req, res) => {
 
     try {
         const data = await req.storage.getAll();
-        res.json(data);
+        console.log(data);
+        res.send(data);
 
     } catch (err) {
-        
-        res.json({message: err.message});
+
+        res.status(400).json({ message: err.message });
     }
 
 })
 
 router.post('/create', async (req, res) => {
     const body = req.body;
-    const method = req.method;
 
-        try {
-            await req.storage.create(body);
-        } catch (err) {
-            res.json({message: err.message});
-        }
-    
+    try {
+        await req.storage.create(body);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+
 })
 
 router.get('/catalog/details/:id', async (req, res) => {
@@ -36,7 +36,7 @@ router.get('/catalog/details/:id', async (req, res) => {
         res.json(data);
 
     } catch (err) {
-        res.json({message: err.message});
+        res.status(400).json({ message: err.message });
     }
 
 })

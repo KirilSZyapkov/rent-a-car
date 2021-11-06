@@ -64,6 +64,7 @@ async function register(userName, email, password, rePass) {
     const user = await new User({ userName, email, hashPassword });
     await user.save();
 
+    
     return {
         _id: user._id,
         accessToken: createToken(user),
@@ -92,6 +93,7 @@ function readToken(req, res) {
         try {
             const data = jwt.verify(token, SECRET_KEY);
             req.user = data;
+            
         } catch (err) {
             res.clearCookie(COOKIE_NAME);
             return false;
