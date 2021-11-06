@@ -8,15 +8,8 @@ module.exports = () => (req, res, next) => {
     if (readToken(req, res)) {
         req.auth = {
 
-            async login(userName, password) {
-                const token = await login(userName, password);
-                res.cookie(COOKIE_NAME, token);
-            },
-
-            async register(userName, email, password, rePass) {
-                const token = await register(userName, email, password, rePass);
-                res.cookie(COOKIE_NAME, token);
-            },
+            login,
+            register,
 
             logout() {
                 res.clearCookie(COOKIE_NAME);
@@ -37,7 +30,11 @@ async function login(email, password) {
     if (user) {
         const itMatch = await bcrypt.compare(password, user.hashPassword);
         if (itMatch) {
-            return createToken(user);
+            return {
+                _id: user._id,
+                accessToken: createToken(user),
+                userName: user.userName
+            };
         } else {
             throw new Error('Invalid password!');
         }
@@ -47,6 +44,7 @@ async function login(email, password) {
 };
 
 async function register(userName, email, password, rePass) {
+    
     if (userName === '' || password === '' || email === '') {
         throw new Error('All inputs are required!');
     };
@@ -66,7 +64,11 @@ async function register(userName, email, password, rePass) {
     const user = await new User({ userName, email, hashPassword });
     await user.save();
 
-    return createToken(user);
+    return {
+        _id: user._id,
+        accessToken: createToken(user),
+        userName: user.userName
+    };
 };
 
 function createToken(uSer) {
@@ -77,8 +79,9 @@ function createToken(uSer) {
         email: uSer.email
     };
 
-    return jwt.sign(sesionToken, SECRET_KEY);
+    const token = jwt.sign(sesionToken, SECRET_KEY);
 
+    return token;
 };
 
 function readToken(req, res) {

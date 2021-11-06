@@ -1,7 +1,9 @@
 import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 
-const Login = ({ match }) => {
+import * as api from '../../Services/api';
+
+const Login = ({ match, history }) => {
 
     async function login(e) {
         e.preventDefault();
@@ -14,14 +16,13 @@ const Login = ({ match }) => {
             password: password
         }
 
-        const respons = await fetch('http://localhost:5000/user/login', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
-        console.log(respons);
+        try {
+            await api.login(data);
+            history.push('/catalog');
+        } catch (err) {
+            // console.log(err);
+        }
+
     }
 
     return (

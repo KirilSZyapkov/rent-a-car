@@ -1,7 +1,9 @@
 import styles from './Register.module.css';
 import { Link } from 'react-router-dom';
 
-const Register = ({ match }) => {
+import * as api from '../../Services/api'
+
+const Register = ({ match, history }) => {
 
     async function register(e) {
         e.preventDefault();
@@ -17,16 +19,14 @@ const Register = ({ match }) => {
             password: password,
             rePass: rePass
         }
+        try {
+            await api.register(data);
+            history.push('/catalog');
 
-        const respons = await fetch('http://localhost:5000/user/register', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
-       
-        console.log(respons.userName);
+        } catch (err) {
+            // alert(err);
+            console.log(err);
+        }
     }
 
     return (

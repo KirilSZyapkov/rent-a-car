@@ -6,13 +6,10 @@ const storage = require('../init/storage');
 
 module.exports = async (app) => {
     app.use((req, res, next) => {
-        res.header({ "Access-Control-Allow-Origin": "http://localhost:3000" });
-        res.header({ "Access-Control-Allow-Headers": 'X-Authorization' });
-        res.header({ "Access-Control-Allow-Headers": 'Content-Type' });
-        res.header({ "Access-Control-Allow-Methods": "GET" });
-        res.header({ "Access-Control-Allow-Methods": "POST" });
-        res.header({ "Access-Control-Allow-Methods": "PUT" });
-        res.header({ "Access-Control-Allow-Methods": "DELETE" });
+        res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3000');
+        res.setHeader("Access-Control-Allow-Headers", 'Content-Type, X-Authorization');
+        res.setHeader("Access-Control-Allow-Methods", 'GET, POST, PUT, PATCH, DELETE');
+
         next();
     });
     app.use(express.json());

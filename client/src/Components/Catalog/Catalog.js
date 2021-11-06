@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import styles from './Catalog.module.css';
 import Card from './CatalogCard/Card';
 
+import * as api from '../../Services/api';
+
 const Catalog = (props) => {
 
     const [data, setData] = useState({})
@@ -10,11 +12,8 @@ const Catalog = (props) => {
     useEffect(async () => {
         async function fetchData() {
 
-            const respons = await fetch('http://localhost:5000/catalog', {
-                method:'GET'
-
-            });
-            const data = await respons.json();
+            const data = await api.get('/catalog');
+            
             console.log(data);
         }
         fetchData();
