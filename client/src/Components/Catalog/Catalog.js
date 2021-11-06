@@ -14,7 +14,7 @@ const Catalog = (props) => {
 
             const data = await api.get('/catalog');
             
-            console.log("catalog>>"+data);
+            console.log("catalog>>"+data.length);
         }
         fetchData();
     }, [])

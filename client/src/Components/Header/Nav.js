@@ -26,10 +26,10 @@ const Nav = ({
                             <Link to="/contacts">
                                 <li>About Us</li>
                             </Link>
-                            <Link to="#">
+                            <Link to="profile">
                                 <li>{user}</li>
                             </Link>
-                            <Link to="#">
+                            <Link to="/logout">
                                 <li>Logout</li>
                             </Link>
                         </>

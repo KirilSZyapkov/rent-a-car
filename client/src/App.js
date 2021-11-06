@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 import './App.css';
 
@@ -21,7 +20,8 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { isAuthenticated: sessionStorage.getItem('userName') }
+        this.state = { isAuthenticated: sessionStorage.getItem('userName') };
+       
     }
 
     loggin = () => {
@@ -29,12 +29,13 @@ class App extends Component {
     }
 
     loggout = () => {
+        sessionStorage.clear();
         this.setState({ isAuthenticated: sessionStorage.getItem('userName') });
     }
 
     render() {
         const { isAuthenticated } = this.state;
-                
+
         return (
             <div className="App">
 
@@ -55,6 +56,11 @@ class App extends Component {
                             <Register loggin={this.loggin} />
                         </Route>
                         <Route path="/contacts" component={Contacts} />
+                        <Route path="/logout" render={(props) => {
+                            this.loggout();
+                            props.history.push('/');
+                        }} />
+
 
                     </Switch>
 
