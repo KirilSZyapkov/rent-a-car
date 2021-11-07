@@ -5,7 +5,7 @@ router.get('/catalog', async (req, res) => {
 
     try {
         const data = await req.storage.getAll();
-        console.log(data);
+
         res.send(data);
 
     } catch (err) {
@@ -28,15 +28,15 @@ router.post('/create', async (req, res) => {
 
 router.get('/catalog/details/:id', async (req, res) => {
     const carId = req.params.id;
-    const userId = req.user._id;
 
     try {
 
-        const data = await req.storage.rent(carId, userId);
+        const data = await req.storage.getById(carId);
+
         res.json(data);
 
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(404).json({ message: err.message });
     }
 
 })

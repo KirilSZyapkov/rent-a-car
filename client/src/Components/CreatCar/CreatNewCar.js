@@ -4,6 +4,12 @@ import * as api from '../../Services/api';
 
 function CreatNewCar({ history }) {
 
+    const user = sessionStorage.getItem('userName');
+
+    if (!user) {
+        history.push('/user/register');
+    }
+
     async function createNewCar(e) {
         e.preventDefault();
         const userId = sessionStorage.getItem('userId');
@@ -16,6 +22,7 @@ function CreatNewCar({ history }) {
         const fuelType = target.fuelType.value.trim();
         const transmitiontype = target.transmitiontype.value.trim();
         const luggage = Number(target.luggage.value.trim());
+        const description = Number(target.description.value.trim());
 
         const body = {
             userId,
@@ -25,7 +32,8 @@ function CreatNewCar({ history }) {
             numberseats,
             fuelType,
             transmitiontype,
-            luggage
+            luggage,
+            description
         }
 
         if (!token) {
@@ -34,7 +42,7 @@ function CreatNewCar({ history }) {
         }
 
         try {
-            await api.post('/create',body)
+            await api.post('/create', body)
         } catch (err) {
             alert(err.message);
         }
@@ -69,6 +77,9 @@ function CreatNewCar({ history }) {
 
                         <label htmlFor="luggage"><b>Luggage</b></label>
                         <input className={styles.form_input} type="text" placeholder="Enter number of luggages" name="luggage" />
+
+                        <label htmlFor="description"><b>Description</b></label>
+                        <textarea rows="4" cols="50" className={styles.form_input} type="text" placeholder="Enter some description" name="description" />
                     </section>
                     <section className={styles.clearfix}>
                         <Link to="/catalog"><button type="button" className={styles.cancelbtn}>Cancel</button></Link>

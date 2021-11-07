@@ -5,26 +5,39 @@ import Card from './CatalogCard/Card';
 
 import * as api from '../../Services/api';
 
+
+
 class Catalog extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             cars: []
+        };
+        
+    }
+
+    async componentDidMount() {
+        const res = await api.get('/catalog');
+        this.setState({ cars: res });
+
+    }
+
+    async componentDidUpdate(prevStatr, prevProps) {
+        const res = await api.get('/catalog');
+        
+        if (prevProps.cars.length !== res.length) {
+            this.setState({ cars: res });
         }
     }
 
-    async componentDidMount(){
-        const res = await api.get('/catalog');
-        this.setState({cars:res});
-        console.log(res);
-    }
-
     render() {
+       
+
         return (
             <section className={styles.catalog_container}>
-                {this.state.cars.map(x => 
-                    <Card id={x._id} {...x}/>
+                {this.state.cars.map(x =>
+                    <Card key={x._id} {...x} />
                 )}
 
             </section>

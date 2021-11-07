@@ -5,18 +5,22 @@ function Card({
     _owner,
     imgURL,
     price,
+    carModel,
+    description,
+    _id
 
 }) {
+    const url = `/catalog/details/${_id}`;
     return (
-        <article className={styles.card_container}>
-            <h2>Product Card Product </h2>
+        <article id={_id} className={styles.card_container}>
+            <h2>{carModel}</h2>
 
             <div className={styles.card_content}>
                 <img className={styles.card_img} src={imgURL} alt="Denim Jeans" />
                 <h1>Price for Rent</h1>
-                <p className={styles.card_prie}>$19.99</p>
-                <p className={styles.card_description}>Some text about the jeans.Super slim and comfy lorem ipsum lorem jeansum.Lorem jeamsun denim lorem jeansum.</p> 
-                <Link to="/catalog/details/:id"><p><button>Details</button></p></Link>
+                <p className={styles.card_prie}>${price}</p>
+                <p className={styles.card_description}>{description}</p> 
+                <Link to={url}><p><button>Details</button></p></Link>
             </div>
         </article>
     )
