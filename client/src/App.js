@@ -13,6 +13,7 @@ import Contacts from "./Components/AboutUs/Contacts";
 import CreatNewCar from './Components/CreatCar/CreatNewCar';
 import Details from './Components/Details/Details';
 import Edit from './Components/Edit/Edit';
+import Profile from './Components/Profile/Profile';
 
 
 class App extends Component {
@@ -56,6 +57,7 @@ class App extends Component {
                             <Register loggin={this.loggin} />
                         </Route>
                         <Route path="/contacts" component={Contacts} />
+                        <Route path="/profile" component={Profile}/>
                         <Route path="/logout" render={(props) => {
                             this.loggout();
                             props.history.push('/');
