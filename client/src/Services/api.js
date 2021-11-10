@@ -46,6 +46,7 @@ function getOptions(method = 'get', body) {
 }
 
 export async function get(url) {
+    
     const data = await request(host + url, getOptions());
     return data;
 };
@@ -80,4 +81,10 @@ export async function register(data) {
     sessionStorage.setItem('userId', result._id);
 
     return result;
+}
+
+export async function getUser(url){
+    
+    const user = await request(host + url, getOptions());
+    return user; 
 }

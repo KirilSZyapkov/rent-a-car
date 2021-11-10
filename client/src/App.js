@@ -57,7 +57,7 @@ class App extends Component {
                             <Register loggin={this.loggin} />
                         </Route>
                         <Route path="/contacts" component={Contacts} />
-                        <Route path="/profile" component={Profile}/>
+                        <Route path="/profile/:id" exact component={Profile}/>
                         <Route path="/logout" render={(props) => {
                             this.loggout();
                             props.history.push('/');

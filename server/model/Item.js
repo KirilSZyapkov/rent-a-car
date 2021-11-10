@@ -9,7 +9,7 @@ const schema = new Schema({
     fuelType: { type: String, required: true },
     transmition: { type: String, required: true },
     luggage: { type: Number, required: true },
-    description: { type: Number, required: true, maxlength: [37, 'The description can be maximum 37 charecters.'] },
+    description: { type: String, required: true, maxlength: [37, 'The description can be maximum 37 charecters.'] },
     _isFree: { type: String, default: true },
     rentedBy: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });

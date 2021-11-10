@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Nav = ({
     user,
-    
+
 }) => {
-    
+
+    const userId = sessionStorage.getItem('userId');
+
     return (
         <header>
             <section className={styles.navbar_logo}>
@@ -26,7 +28,7 @@ const Nav = ({
                             <Link to="/contacts">
                                 <li>About Us</li>
                             </Link>
-                            <Link to="profile">
+                            <Link to={"/profile/" + userId}>
                                 <li>{user}</li>
                             </Link>
                             <Link to="/logout">

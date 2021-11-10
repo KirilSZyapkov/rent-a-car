@@ -1,4 +1,5 @@
 const Model = require('../model/Item');
+const User = require('../model/User');
 
 function init() {
     return (req, res, next) => {
@@ -35,10 +36,15 @@ async function create(data) {
         numSeats: data.numberseats,
         fuelType: data.fuelType,
         transmition: data.transmitiontype,
-        luggage: data.luggage
+        luggage: data.luggage,
+        description: data.description
     });
 
+    const user = await User.findById(data.userId);
     await car.save();
+    user.myRecords.push(car._id);
+    await user.save();
+    
 };
 
 async function updateByID(data, id) {

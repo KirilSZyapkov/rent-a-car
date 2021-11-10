@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 import styles from './Register.module.css';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -6,19 +8,23 @@ import * as api from '../../Services/api'
 const Register = ({ loggin }) => {
 
     const history = useHistory();
+    const selectedFile = useRef();
+
+
     async function register(e) {
         e.preventDefault();
         const target = e.target;
         const userName = target.username.value;
         const email = target.email.value;
         const password = target.password.value;
-        const rePass = target.rePass.value;
+        const rePass = target.rePass.value;           
 
         const data = {
             userName: userName,
             email: email,
             password: password,
             rePass: rePass
+            
         }
         try {
             await api.register(data);
@@ -27,7 +33,7 @@ const Register = ({ loggin }) => {
 
         } catch (err) {
             alert(err.message);
-            
+
         }
     }
 

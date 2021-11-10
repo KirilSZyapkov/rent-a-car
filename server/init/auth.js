@@ -10,7 +10,7 @@ module.exports = () => (req, res, next) => {
 
             login,
             register,
-
+            getUser,
             logout() {
                 res.clearCookie(COOKIE_NAME);
             }
@@ -44,7 +44,7 @@ async function login(email, password) {
 };
 
 async function register(userName, email, password, rePass) {
-    
+
     if (userName === '' || password === '' || email === '') {
         throw new Error('All inputs are required!');
     };
@@ -64,12 +64,17 @@ async function register(userName, email, password, rePass) {
     const user = await new User({ userName, email, hashPassword });
     await user.save();
 
-    
+
     return {
         _id: user._id,
         accessToken: createToken(user),
         userName: user.userName
     };
+};
+
+async function getUser(id) {
+    const user = await User.findById(id).populate('myRecords').populate('bookedCars').lean();
+    return user;
 };
 
 function createToken(uSer) {
@@ -93,7 +98,7 @@ function readToken(req, res) {
         try {
             const data = jwt.verify(token, SECRET_KEY);
             req.user = data;
-            
+
         } catch (err) {
             res.clearCookie(COOKIE_NAME);
             return false;

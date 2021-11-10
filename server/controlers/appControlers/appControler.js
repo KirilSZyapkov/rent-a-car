@@ -20,6 +20,8 @@ router.post('/create', async (req, res) => {
 
     try {
         await req.storage.create(body);
+        res.status(201).end();
+
     } catch (err) {
         res.status(400).json({ message: err.message });
     }

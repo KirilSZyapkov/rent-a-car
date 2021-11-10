@@ -22,7 +22,7 @@ function CreatNewCar({ history }) {
         const fuelType = target.fuelType.value.trim();
         const transmitiontype = target.transmitiontype.value.trim();
         const luggage = Number(target.luggage.value.trim());
-        const description = Number(target.description.value.trim());
+        const description =target.description.value.trim();
 
         const body = {
             userId,
@@ -42,7 +42,8 @@ function CreatNewCar({ history }) {
         }
 
         try {
-            await api.post('/create', body)
+            await api.post('/create', body);
+            history.push('/catalog');
         } catch (err) {
             alert(err.message);
         }

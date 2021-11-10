@@ -19,6 +19,7 @@ function Details({
     useEffect(async () => {
         const respons = await api.get(url);
         setCar(respons)
+        
     }, []);
 
 
@@ -49,12 +50,15 @@ function Details({
                     <h1>Price: {car.price}€</h1>
                     {token ?
                         <>
-                            {(userId !== car._owner) ? <Link to={`catalog/details/rent/${match.params.id}`}><button className={styles.rentbtn}>Rent</button></Link> : ''}
+                            {(userId !== car._owner) ?
+                                <Link to={`/catalog/details/rent/${match.params.id}`}><button className={styles.rentbtn}>Rent</button></Link>
+                                :
+                                ''}
                             <Link to="/catalog"><button className={styles.backbtn}>Back</button></Link>
 
                             {(userId === car._owner) ?
                                 <>
-                                
+
                                     <Link to={`/catalog/edit/${match.params.id}`}><button className={styles.backbtn}>Edit</button></Link>
                                     <Link to={`/catalog/details/delete/${match.params.id}`}><button className={styles.deletebtn}>Delete</button></Link>
                                 </>

@@ -13,7 +13,9 @@ module.exports = async (app) => {
         next();
     });
     app.use(express.json());
-    app.use(express.urlencoded());
+    app.use(express.urlencoded({
+        extended: true
+    }));
     app.use(cookieParser());
     app.use(await auth());
     app.use(await storage());

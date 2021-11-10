@@ -19,7 +19,7 @@ const Login = ({ loggin }) => {
         try {
             await api.login(data);
             loggin();
-            history.push('/');
+            history.push('/catalog');
         } catch (err) {
 
             alert(err.message);

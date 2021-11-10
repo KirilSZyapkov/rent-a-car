@@ -1,14 +1,36 @@
-import Item from './ListCard/Item';
 import { Link } from 'react-router-dom';
-import styles from './Profile.module.css';
+import { useState, useEffect } from 'react';
 
-function Profile() {
+import Item from './ListCard/Item';
+import styles from './Profile.module.css';
+import * as api from '../../Services/api';
+
+function Profile({
+    match,
+    history
+}) {
+
+    const token = sessionStorage.getItem('authToken');
+    const url = match.url;
+
+    if (!token) {
+        history.push('/user/register');
+    }
+
+    const [user, setUser] = useState({});
+
+    useEffect(async () => {
+        const respons = await api.get(url);
+        setUser(respons);
+    }, [])
+    
+
     return (
         <section className={styles.profile}>
             <article className={styles.profile_information}>
-                <h2>Name</h2>
+                <h2>{user.userName}</h2>
                 <section className={styles.profile_img}>
-                <img src="/img_avatar.png" alt="profile picture" />
+                    <img src="/img_avatar.png" alt="profile picture" />
                 </section>
                 <section className={styles.profile_contacts}>
                     <h3>Contacts</h3>
@@ -20,22 +42,28 @@ function Profile() {
                     <Link to="#"><p><i class="far fa-envelope"> My Email</i></p></Link>
                 </section>
             </article>
-            <article className={styles.profile_list}>
-                <h2>My Cars</h2>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                
-            </article>
+            <section className={styles.records}>
+                <article className={styles.profile_list}>
+                    <h2>My Cars</h2>
+                    {(user.myRecords && (user.myRecords.length !== 0)) ? user.myRecords.map(car =>
+
+                        <Item key={car._id} {...car} />)
+                        :
+                        <p>You don't have records!</p>
+                    }
+
+                </article>
+                <article className={styles.profile_list}>
+                    <h2>My Bookings</h2>
+                    {(user.bookedCars && (user.bookedCars.length !== 0)) ? user.bookedCars.map(car =>
+
+                        <Item key={car._id} {...car} />)
+                        :
+                        <p>You didn't book any car!</p>
+                    }
+
+                </article>
+            </section>
         </section>
     );
 }
