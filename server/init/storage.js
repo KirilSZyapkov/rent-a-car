@@ -44,7 +44,7 @@ async function create(data) {
     await car.save();
     user.myRecords.push(car._id);
     await user.save();
-    
+
 };
 
 async function updateByID(data, id) {
@@ -54,7 +54,8 @@ async function updateByID(data, id) {
 
     const car = Model.findById(id);
     await car.updateOne(data);
-
+    
+   
 };
 
 async function deleteById(id) {

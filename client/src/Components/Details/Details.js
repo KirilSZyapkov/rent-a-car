@@ -16,14 +16,27 @@ function Details({
 
     const [car, setCar] = useState({});
 
-    useEffect(() => {
+    useEffect(async () => {
         async function fetchData() {
 
             const respons = await api.get(url);
             setCar(respons);
         }
         fetchData();
+
     }, []);
+
+    async function deleteCar() {
+        const url = '/catalog/details/delete/'+car._id;
+        try {
+            await api.del(url);
+            history.push('/catalog');
+        } catch (err) {
+            alert(err.message);
+        }
+
+
+    }
 
     return (
         <section className={styles.details_section_container}>
@@ -62,7 +75,7 @@ function Details({
                                 <>
 
                                     <Link to={`/catalog/edit/${match.params.id}`}><button className={styles.backbtn}>Edit</button></Link>
-                                    <Link to={`/catalog/details/delete/${match.params.id}`}><button className={styles.deletebtn}>Delete</button></Link>
+                                    <Link to={`/catalog/details/delete/${match.params.id}`}><button className={styles.deletebtn} onClick={deleteCar}>Delete</button></Link>
                                 </>
                                 :
                                 ''

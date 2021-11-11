@@ -60,6 +60,7 @@ export async function post(url, data) {
 };
 
 export async function del(url) {
+    
     return await request(host + url, getOptions('delete'));
 };
 
