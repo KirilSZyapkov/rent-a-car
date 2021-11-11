@@ -19,11 +19,15 @@ function Profile({
 
     const [user, setUser] = useState({});
 
-    useEffect(async () => {
-        const respons = await api.get(url);
-        setUser(respons);
+    useEffect(() => {
+        async function fetchData() {
+
+            const respons = await api.get(url);
+            setUser(respons);
+        }
+        fetchData();
     }, [])
-    
+
 
     return (
         <section className={styles.profile}>

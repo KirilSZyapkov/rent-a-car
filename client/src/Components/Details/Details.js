@@ -16,12 +16,14 @@ function Details({
 
     const [car, setCar] = useState({});
 
-    useEffect(async () => {
-        const respons = await api.get(url);
-        setCar(respons)
-        
-    }, []);
+    useEffect(() => {
+        async function fetchData() {
 
+            const respons = await api.get(url);
+            setCar(respons);
+        }
+        fetchData();
+    }, []);
 
     return (
         <section className={styles.details_section_container}>

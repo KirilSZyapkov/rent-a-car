@@ -8,9 +8,7 @@ import * as api from '../../Services/api'
 const Register = ({ loggin }) => {
 
     const history = useHistory();
-    const selectedFile = useRef();
-
-
+    
     async function register(e) {
         e.preventDefault();
         const target = e.target;
