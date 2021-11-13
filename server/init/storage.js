@@ -54,11 +54,18 @@ async function updateByID(data, id) {
 
     const car = Model.findById(id);
     await car.updateOne(data);
-    
-   
+
+
 };
 
 async function deleteById(id) {
+    
+    const car = await Model.findById(id).populate('rentedBy').lean();
+    const owner = await User.findById(car._owner);
+    const index = owner.myRecords.indexOf(car._id);
+    owner.myRecords.splice(index, 1);
+    await owner.save();
+
     await Model.findByIdAndDelete(id);
 };
 

@@ -23,8 +23,6 @@ function Edit({
         fetchData();
     }, []);
 
-    console.log(car);
-
     async function editCar(e) {
         e.preventDefault();
         const target = e.target;

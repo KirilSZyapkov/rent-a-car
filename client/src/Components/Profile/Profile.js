@@ -28,6 +28,7 @@ function Profile({
         fetchData();
     }, [])
 
+    console.log(user);
 
     return (
         <section className={styles.profile}>
