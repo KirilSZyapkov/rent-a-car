@@ -83,9 +83,3 @@ export async function register(data) {
 
     return result;
 }
-
-export async function getUser(url){
-    
-    const user = await request(host + url, getOptions());
-    return user; 
-}

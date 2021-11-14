@@ -83,4 +83,26 @@ router.delete('/catalog/details/delete/:id', async (req, res) => {
     }
 });
 
+router.put('/catalog/details/rent/:id', async (req, res) => {
+    const carId = req.params.id;
+    const userId = req.body.id;
+    try {
+        const car = await req.storage.rent(carId, userId);
+        res.status(201).json(car).end();
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+router.put('/catalog/details/cancel/:id', async (req, res) => {
+    const carId = req.params.id;
+    const userId = req.body.id;
+    try {
+        const car = await req.storage.cancelBooking(carId, userId);
+        res.status(201).json(car).end();
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
 module.exports = router;

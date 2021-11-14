@@ -13,10 +13,12 @@ function Details({
     const url = match.url;
     const userId = sessionStorage.getItem('userId');
     const token = sessionStorage.getItem('authToken');
+    let bookedCars;
+    let isMyBooking;
 
     const [car, setCar] = useState({});
 
-    useEffect(async () => {
+    useEffect(() => {
         async function fetchData() {
 
             const respons = await api.get(url);
@@ -24,10 +26,12 @@ function Details({
         }
         fetchData();
 
+
     }, []);
 
-    async function deleteCar() {
-        const url = '/catalog/details/delete/'+car._id;
+    async function deleteCar(e) {
+        e.stopPropagation();
+        const url = '/catalog/details/delete/' + car._id;
         try {
             await api.del(url);
             history.push('/catalog');
@@ -37,6 +41,42 @@ function Details({
 
 
     }
+
+    async function rentCar() {
+        const url = '/catalog/details/rent/' + car._id;
+        const userId = sessionStorage.getItem('userId');
+        const body = {
+            id: userId
+        }
+        try {
+            await api.put(url, body);
+            history.push('/profile/' + userId);
+        } catch (err) {
+            alert(err.message);
+        }
+    }
+
+    async function cancelBooking(){
+        const url = '/catalog/details/cancel/' + car._id;
+        const userId = sessionStorage.getItem('userId');
+        const body = {
+            id: userId
+        }
+        try {
+            await api.put(url, body);
+            history.push('/profile/' + userId);
+        } catch (err) {
+            alert(err.message);
+        }
+    }
+
+    if (car.rentedBy) {
+
+        bookedCars = (car.rentedBy[0] || []).bookedCars || [];
+        isMyBooking = bookedCars.includes(match.params.id);
+        
+    }
+
 
     return (
         <section className={styles.details_section_container}>
@@ -66,7 +106,18 @@ function Details({
                     {token ?
                         <>
                             {(userId !== car._owner) ?
-                                <Link to={`/catalog/details/rent/${match.params.id}`}><button className={styles.rentbtn}>Rent</button></Link>
+                                <>
+                                    {(car._isFree === 'true') ? <Link to={`/catalog/details/rent/${match.params.id}`}><button className={styles.rentbtn} onClick={() => rentCar()}>Rent</button></Link> : ''}
+                                </>
+                                :
+                                ''}
+
+
+
+                            {isMyBooking ?
+                                <>
+                                    <Link to={`/catalog/details/cancel/${match.params.id}`}><button className={styles.rentbtn} onClick={() => cancelBooking()}>Cancel</button></Link>
+                                </>
                                 :
                                 ''}
                             <Link to="/catalog"><button className={styles.backbtn}>Back</button></Link>
@@ -75,7 +126,7 @@ function Details({
                                 <>
 
                                     <Link to={`/catalog/edit/${match.params.id}`}><button className={styles.backbtn}>Edit</button></Link>
-                                    <Link to={`/catalog/details/delete/${match.params.id}`}><button className={styles.deletebtn} onClick={deleteCar}>Delete</button></Link>
+                                    <Link to={`/catalog/details/delete/${match.params.id}`}><button className={styles.deletebtn} onClick={(e) => deleteCar(e)}>Delete</button></Link>
                                 </>
                                 :
                                 ''
