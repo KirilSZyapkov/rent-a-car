@@ -2,8 +2,28 @@ import { Component } from 'react';
 import styles from './Contacts.module.css';
 
 
+
+
 class Contacts extends Component {
 
+    componentDidMount() {
+        this.renderMap()
+    }
+
+    renderMap = () => {
+        loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyD4L8RDcj8kbyrnKW8IOdNcaONvuGAYUGY&callback=initMap&libraries=&v=weekly')
+        window.initMap = this.initMap;
+    }
+
+    initMap = () => {
+        // The location of Uluru
+        const uluru = { lat: -25.344, lng: 131.036 };
+        // The map, centered at Uluru
+        const map = new window.google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+            center: uluru,
+        });
+    }
     render() {
         return (
             <section>
@@ -59,10 +79,29 @@ class Contacts extends Component {
                     </div>
 
                 </div>
-             
+
+                <div className={styles.map_container}>
+                    <div>
+                        <h2>Contact Us</h2>
+                        <p>Swing by for a cup of coffee, or leave us a message: </p>
+                    </div>
+
+                    <div className={styles.map} id="map"></div>
+
+                </div>
+
             </section>
         );
     }
+}
+
+function loadScript(url) {
+    let index = window.document.getElementsByTagName('script')[0];
+    let script = window.document.createElement('script');
+    script.src = url;
+    script.async = true;
+    script.defer = true;
+    index.parentNode.insertBefore(script, index);
 }
 
 export default Contacts;
