@@ -1,5 +1,6 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import styles from './Contacts.module.css';
+
 
 class Contacts extends Component {
 
@@ -16,7 +17,7 @@ class Contacts extends Component {
                 <div className={styles.row}>
                     <div className={styles.column}>
                         <div className={styles.card}>
-                            <img src="/personOne.jpg" alt="Jane"/>
+                            <img src="/personOne.jpg" alt="Jane" />
                             <div className={styles.container}>
                                 <h2>Jane Doe</h2>
                                 <p className={styles.title}>CEO & Founder</p>
@@ -31,7 +32,7 @@ class Contacts extends Component {
 
                     <div className={styles.column}>
                         <div className={styles.card}>
-                            <img src="im2.jpg" alt="Mike"/>
+                            <img src="im2.jpg" alt="Mike" />
                             <div className={styles.container}>
                                 <h2>Mike Ross</h2>
                                 <p className={styles.title}>Art Director</p>
@@ -46,7 +47,7 @@ class Contacts extends Component {
 
                     <div className={styles.column}>
                         <div className={styles.card}>
-                            <img src="personThree.jpg" alt="John"/>
+                            <img src="personThree.jpg" alt="John" />
                             <div className={styles.container}>
                                 <h2>John Doe</h2>
                                 <p className={styles.title}>Designer</p>
@@ -58,6 +59,7 @@ class Contacts extends Component {
                     </div>
 
                 </div>
+             
             </section>
         );
     }
