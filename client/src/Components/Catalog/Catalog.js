@@ -23,14 +23,6 @@ class Catalog extends Component {
 
     }
 
-    async componentDidUpdate(prevStatr, prevProps) {
-        const res = await api.get('/catalog');
-        
-        if (prevProps.cars.length !== res.length) {
-            this.setState({ cars: res });
-        }
-    }
-
     render() {
        
 
@@ -47,4 +39,3 @@ class Catalog extends Component {
 }
 
 export default Catalog;
-
