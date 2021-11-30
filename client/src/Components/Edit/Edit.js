@@ -21,7 +21,7 @@ function Edit({
             setCar(respons);
         };
         fetchData();
-    }, []);
+    }, [url]);
 
     async function editCar(e) {
         e.preventDefault();

@@ -26,7 +26,7 @@ function Profile({
             setUser(respons);
         }
         fetchData();
-    }, [])
+    }, [url])
 
     
 
@@ -35,7 +35,7 @@ function Profile({
             <article className={styles.profile_information}>
                 <h2>{user.userName}</h2>
                 <section className={styles.profile_img}>
-                    <img src="/img_avatar.png" alt="profile picture" />
+                    <img src="/img_avatar.png" alt="profile" />
                 </section>
                 <section className={styles.profile_contacts}>
                     <h3>Contacts</h3>

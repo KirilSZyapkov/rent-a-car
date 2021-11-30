@@ -41,7 +41,7 @@ const Login = ({ loggin }) => {
                 <label htmlFor="password"><b>Password</b></label>
                 <input className={styles.form_login} type="password" placeholder="Enter Password" name="password" />
 
-                <p>By creating an account you agree to our <a href="javascript:void(0)" >Terms & Privacy</a>.</p>
+                <p>By creating an account you agree to our <a href="#" >Terms and Privacy</a></p>
 
                 <div>
                     <Link to="/"><button type="button" className={styles.cancelbtn}>Cancel</button></Link>

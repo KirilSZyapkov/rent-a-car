@@ -23,6 +23,8 @@ class Contacts extends Component {
             zoom: 4,
             center: uluru,
         });
+
+        return map;
     }
     render() {
         return (

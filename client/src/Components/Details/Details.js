@@ -27,7 +27,7 @@ function Details({
         fetchData();
 
 
-    }, []);
+    }, [url]);
 
     async function deleteCar(e) {
         e.stopPropagation();
