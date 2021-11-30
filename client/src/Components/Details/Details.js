@@ -114,7 +114,7 @@ function Details({
 
 
 
-                            {isMyBooking ?
+                            {isMyBooking && (userId !== car._owner) ?
                                 <>
                                     <Link to={`/catalog/details/cancel/${match.params.id}`}><button className={styles.rentbtn} onClick={() => cancelBooking()}>Cancel</button></Link>
                                 </>
