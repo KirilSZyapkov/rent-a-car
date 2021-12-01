@@ -3,9 +3,9 @@ const host = 'http://localhost:5000';
 
 async function request(url, options) {
     try {
-        console.log('api >>> '+url)
+       
         const respons = await fetch(url, options);
-        console.log('api >>> '+respons)
+        
         if (respons.ok === false) {
             const error = await respons.json();
             
@@ -20,9 +20,7 @@ async function request(url, options) {
         }
 
     } catch (err) {
-        console.log('api >>> '+err)
-        alert(err);
-        
+               
         throw err;
     }
 }

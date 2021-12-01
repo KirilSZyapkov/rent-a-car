@@ -78,10 +78,10 @@ router.put('/catalog/edit/:id', async (req, res) => {
 });
 
 router.get('/catalog/details/delete/:id', async (req, res) => {
-    
+    const carId = req.params.id;
     try {
 
-        await req.storage.deleteById(req.params.id);
+        await req.storage.deleteById(carId);
         res.status(200).end();
 
     } catch (err) {

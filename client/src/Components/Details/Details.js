@@ -10,37 +10,24 @@ function Details({
     history
 }) {
 
-    const url = match.url;
-    const userId = sessionStorage.getItem('userId');
-    const token = sessionStorage.getItem('authToken');
-    let bookedCars;
-    let isMyBooking;
-
     const [car, setCar] = useState({});
 
     useEffect(() => {
         async function fetchData() {
 
-            const respons = await api.get(url);
+            const respons = await api.get(match.url);
             setCar(respons);
         }
         fetchData();
 
 
-    }, [url]);
+    }, [match.url]);
 
-    async function deleteCar(e) {
-        e.stopPropagation();
-        const url = '/catalog/details/delete/' + car._id;
-        try {
-            await api.del(url);
-            history.push('/catalog');
-        } catch (err) {
-            alert(err.message);
-        }
-
-
-    }
+    const userId = sessionStorage.getItem('userId');
+    const token = sessionStorage.getItem('authToken');
+    let bookedCars;
+    let isMyBooking;
+    
 
     async function rentCar() {
         const url = '/catalog/details/rent/' + car._id;
@@ -56,7 +43,7 @@ function Details({
         }
     }
 
-    async function cancelBooking(){
+    async function cancelBooking() {
         const url = '/catalog/details/cancel/' + car._id;
         const userId = sessionStorage.getItem('userId');
         const body = {
@@ -70,11 +57,24 @@ function Details({
         }
     }
 
+    async function deleteCar(e) {
+        e.stopPropagation();
+        const url = '/catalog/details/delete/' + car._id;
+        try {
+            await api.del(url);
+            history.push('/catalog');
+        } catch (err) {
+            alert(err.message);
+        }
+
+
+    }
+
     if (car.rentedBy) {
 
         bookedCars = (car.rentedBy[0] || []).bookedCars || [];
         isMyBooking = bookedCars.includes(match.params.id);
-        
+
     }
 
 
