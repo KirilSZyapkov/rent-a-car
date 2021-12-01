@@ -1,6 +1,7 @@
 import styles from './HomePage.module.css';
 
 const HomePage = (props) => {
+
     return (
         <section className={styles.landing_page}>
             <article className={styles.content_container}>

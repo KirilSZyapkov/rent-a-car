@@ -3,9 +3,9 @@ const host = 'http://localhost:5000';
 
 async function request(url, options) {
     try {
-
+        console.log('api >>> '+url)
         const respons = await fetch(url, options);
-
+        console.log('api >>> '+respons)
         if (respons.ok === false) {
             const error = await respons.json();
             
@@ -20,7 +20,8 @@ async function request(url, options) {
         }
 
     } catch (err) {
-        // alert(err);
+        console.log('api >>> '+err)
+        alert(err);
         
         throw err;
     }
@@ -61,7 +62,7 @@ export async function post(url, data) {
 
 export async function del(url) {
     
-    return await request(host + url, getOptions('delete'));
+    return await request(host + url, getOptions());
 };
 
 export async function login(data) {

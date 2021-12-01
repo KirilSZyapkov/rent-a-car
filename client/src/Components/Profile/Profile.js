@@ -26,9 +26,8 @@ function Profile({
             setUser(respons);
         }
         fetchData();
-    }, [url])
-
-    
+    }, [url]);
+   
 
     return (
         <section className={styles.profile}>
