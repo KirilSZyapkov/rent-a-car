@@ -61,17 +61,16 @@ async function updateByID(data, id) {
 
 async function deleteById(id) {
 
-    const car = await Model.findById(id);
-    const rentedById = car.rentedBy;
-
+    const car = await Model.findById(id).populate('rentedBy');
     const owner = await User.findById(car._owner);
     const index = owner.myRecords.indexOf(car._id);
     owner.myRecords.splice(index, 1);
 
-    const renter = await User.findById(rentedById);
-    const bookingIndex = renter.bookedCars.indexOf(renter);
-    renter.bookedCars.splice(bookingIndex, 1);
-
+    const userName = car.rentedBy[0].userName;
+    const renter = await User.findOne({ userName: userName });
+    const indexRenter = renter.bookedCars.indexOf(id);
+    renter.bookedCars.splice(indexRenter, 1);
+    
     await owner.save();
     await renter.save();
 
@@ -97,12 +96,12 @@ async function cancelBooking(carId, userId) {
     const indexUser = user.bookedCars.indexOf(carId);
     const indexCar = car.rentedBy.indexOf(userId);
 
-   
+
     car._isFree = true;
-        
+
     user.bookedCars.splice(indexUser, 1);
     car.rentedBy.splice(indexCar, 1);
-    
+
     await user.save();
     await car.save();
 
