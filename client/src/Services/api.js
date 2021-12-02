@@ -60,7 +60,7 @@ export async function post(url, data) {
 
 export async function del(url) {
     
-    return await request(host + url, getOptions());
+    return await request(host + url, getOptions('delete'));
 };
 
 export async function login(data) {

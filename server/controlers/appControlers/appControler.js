@@ -2,7 +2,7 @@ const router = require('express').Router();
 const error = require('../../config/err');
 
 router.get('/catalog', async (req, res) => {
-    
+
 
     try {
         const data = await req.storage.getAll();
@@ -18,14 +18,14 @@ router.get('/catalog', async (req, res) => {
 
 router.post('/create', async (req, res) => {
     const body = req.body;
-    
+
     try {
         await req.storage.create(body);
         res.status(201).end();
 
     } catch (err) {
         const errList = error(err);
-        
+
         res.status(400).json({ message: errList });
     }
 
@@ -77,12 +77,12 @@ router.put('/catalog/edit/:id', async (req, res) => {
 
 });
 
-router.get('/catalog/details/delete/:id', async (req, res) => {
+router.delete('/catalog/details/delete/:id', async (req, res) => {
     const carId = req.params.id;
     try {
 
-        await req.storage.deleteById(carId);
-        res.status(200).end();
+        const data = await req.storage.deleteById(carId);
+        res.status(204).json(data).end();
 
     } catch (err) {
         const errList = error(err);

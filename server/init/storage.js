@@ -66,15 +66,21 @@ async function deleteById(id) {
     const index = owner.myRecords.indexOf(car._id);
     owner.myRecords.splice(index, 1);
 
-    const userName = car.rentedBy[0].userName;
-    const renter = await User.findOne({ userName: userName });
-    const indexRenter = renter.bookedCars.indexOf(id);
-    renter.bookedCars.splice(indexRenter, 1);
+    if(car.rentedBy[0]){
+        const userName = car.rentedBy[0].userName;
+        const renter = await User.findOne({ userName: userName });
+        const indexRenter = renter.bookedCars.indexOf(id);
+        renter.bookedCars.splice(indexRenter, 1);
+
+        await renter.save();
+    }
+
     
     await owner.save();
-    await renter.save();
 
     await Model.findByIdAndDelete(id);
+
+    return car._id;
 };
 
 async function rent(carId, userId) {
