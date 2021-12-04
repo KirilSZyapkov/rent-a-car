@@ -3,6 +3,8 @@ const cookieParser = require('cookie-parser');
 const router = require('./router');
 const auth = require('../init/auth');
 const storage = require('../init/storage');
+const { SECRET_KEY } = require('../init/init');
+const authentication = require('../middlewares/authentication');
 
 module.exports = async (app) => {
     app.use((req, res, next) => {
@@ -16,6 +18,7 @@ module.exports = async (app) => {
     app.use(express.urlencoded({
         extended: true
     }));
+    app.use(authentication(SECRET_KEY));
     app.use(cookieParser());
     app.use(await auth());
     app.use(await storage());

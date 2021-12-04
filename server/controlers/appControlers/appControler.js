@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const error = require('../../config/err');
+const { isAuth } = require('../../middlewares/guards');
 
 router.get('/catalog', async (req, res) => {
 
@@ -16,7 +17,7 @@ router.get('/catalog', async (req, res) => {
 
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', isAuth(), async (req, res) => {
     const body = req.body;
 
     try {
@@ -47,7 +48,7 @@ router.get('/catalog/details/:id', async (req, res) => {
 
 });
 
-router.get('/catalog/edit/:id', async (req, res) => {
+router.get('/catalog/edit/:id', isAuth(), async (req, res) => {
     const carId = req.params.id;
     try {
 
@@ -61,7 +62,7 @@ router.get('/catalog/edit/:id', async (req, res) => {
 
 });
 
-router.put('/catalog/edit/:id', async (req, res) => {
+router.put('/catalog/edit/:id', isAuth(), async (req, res) => {
     const carId = req.params.id;
     const body = req.body;
 
@@ -77,7 +78,7 @@ router.put('/catalog/edit/:id', async (req, res) => {
 
 });
 
-router.delete('/catalog/details/delete/:id', async (req, res) => {
+router.delete('/catalog/details/delete/:id', isAuth(), async (req, res) => {
     const carId = req.params.id;
     try {
 
@@ -90,7 +91,7 @@ router.delete('/catalog/details/delete/:id', async (req, res) => {
     }
 });
 
-router.put('/catalog/details/rent/:id', async (req, res) => {
+router.put('/catalog/details/rent/:id', isAuth(), async (req, res) => {
     const carId = req.params.id;
     const userId = req.body.id;
     try {
@@ -102,7 +103,7 @@ router.put('/catalog/details/rent/:id', async (req, res) => {
     }
 });
 
-router.put('/catalog/details/cancel/:id', async (req, res) => {
+router.put('/catalog/details/cancel/:id', isAuth(), async (req, res) => {
     const carId = req.params.id;
     const userId = req.body.id;
     try {

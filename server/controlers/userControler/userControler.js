@@ -1,6 +1,7 @@
 const router = require('express').Router();
+const { isGuest } = require('../../middlewares/guards');
 
-router.post('/login', async (req, res) => {
+router.post('/login', isGuest(), async (req, res) => {
 
     const email = req.body.email;
     const password = req.body.password;
@@ -13,7 +14,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', isGuest(), async (req, res) => {
 
 
 
