@@ -94,7 +94,7 @@ function Edit({
                         <textarea rows="4" cols="50" className={styles.form_input} type="text" placeholder="Enter some description" name="description" defaultValue={car.description} />
                     </section>
                     <section className={styles.clearfix}>
-                        <Link to="/catalog/details/:id"><button type="button" className={styles.cancelbtn}>Cancel</button></Link>
+                        <Link to={`/catalog/details/${car._id}`}><button type="button" className={styles.cancelbtn}>Cancel</button></Link>
 
                         <button type="submit" className={styles.createbtn}>Save</button>
                     </section>

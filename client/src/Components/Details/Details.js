@@ -23,14 +23,15 @@ function Details({
 
     }, [match.url]);
 
-   
+
     const userId = sessionStorage.getItem('userId');
     const token = sessionStorage.getItem('authToken');
     let bookedCars;
     let isMyBooking;
-    
 
-    async function rentCar() {
+
+    async function rentCar(e) {
+        e.stopPropagation();
         const url = '/catalog/details/rent/' + car._id;
         const userId = sessionStorage.getItem('userId');
         const body = {
@@ -59,10 +60,14 @@ function Details({
     }
 
     async function deleteCar(e) {
-        e.stopPropagation();
+        
         const url = '/catalog/details/delete/' + car._id;
         try {
-            await api.del(url);
+
+            const confirmed = window.confirm('Are you sure you want to delete this item?');
+            if (confirmed) {
+                await api.del(url);
+            }
             history.push('/catalog');
         } catch (err) {
             alert(err.message);
@@ -74,7 +79,7 @@ function Details({
     if (car.rentedBy) {
 
         bookedCars = (car.rentedBy[0] || [])._id || [];
-   
+
         isMyBooking = bookedCars === userId;
 
     }
@@ -108,7 +113,7 @@ function Details({
                         <>
                             {(userId !== car._owner) ?
                                 <>
-                                    {(car._isFree === 'true') ? <Link to={`/catalog/details/rent/${match.params.id}`}><button className={styles.rentbtn} onClick={() => rentCar()}>Rent</button></Link> : ''}
+                                    {(car._isFree === 'true') ? <Link to={`/catalog/details/rent/${match.params.id}`}><button className={styles.rentbtn} onClick={(e) => rentCar(e)}>Rent</button></Link> : ''}
                                 </>
                                 :
                                 ''}
@@ -117,7 +122,7 @@ function Details({
 
                             {isMyBooking && (userId !== car._owner) ?
                                 <>
-                                    <Link to={`/catalog/details/cancel/${match.params.id}`}><button className={styles.rentbtn} onClick={() => cancelBooking()}>Cancel</button></Link>
+                                    <Link to={`/catalog/details/cancel/${match.params.id}`}><button className={styles.rentbtn} onClick={(e) => cancelBooking(e)}>Cancel</button></Link>
                                 </>
                                 :
                                 ''}

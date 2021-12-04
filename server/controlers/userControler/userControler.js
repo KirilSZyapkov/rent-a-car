@@ -3,8 +3,8 @@ const { isGuest } = require('../../middlewares/guards');
 
 router.post('/login', isGuest(), async (req, res) => {
 
-    const email = req.body.email;
-    const password = req.body.password;
+    const email = req.body.email.trim();
+    const password = req.body.password.trim();
     try {
 
         const token = await req.auth.login(email, password);

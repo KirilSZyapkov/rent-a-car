@@ -23,7 +23,7 @@ module.exports = {
 
     isOwner() {
         return async (req, res, next) => {
-            const carId = req.params._id;
+            const carId = req.params.id;
             const car = await Model.findById(carId).lean();
 
             if (car._owner === req.user._id) {
