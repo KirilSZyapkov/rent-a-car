@@ -23,6 +23,7 @@ function Details({
 
     }, [match.url]);
 
+   
     const userId = sessionStorage.getItem('userId');
     const token = sessionStorage.getItem('authToken');
     let bookedCars;
@@ -72,11 +73,11 @@ function Details({
 
     if (car.rentedBy) {
 
-        bookedCars = (car.rentedBy[0] || []).bookedCars || [];
-        isMyBooking = bookedCars.includes(match.params.id);
+        bookedCars = (car.rentedBy[0] || [])._id || [];
+   
+        isMyBooking = bookedCars === userId;
 
     }
-
 
     return (
         <section className={styles.details_section_container}>

@@ -21,7 +21,7 @@ async function getAll() {
 };
 
 async function getById(id) {
-    return await Model.findById(id).populate('rentedBy').lean();
+    return await Model.findById(id).populate('rentedBy');
 };
 
 async function create(data) {
