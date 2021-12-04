@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const error = require('../../config/err');
-const { isAuth } = require('../../middlewares/guards');
+const { isAuth, isOwner } = require('../../middlewares/guards');
 
 router.get('/catalog', async (req, res) => {
 
@@ -62,7 +62,7 @@ router.get('/catalog/edit/:id', isAuth(), async (req, res) => {
 
 });
 
-router.put('/catalog/edit/:id', isAuth(), async (req, res) => {
+router.put('/catalog/edit/:id', isAuth(), isOwner(), async (req, res) => {
     const carId = req.params.id;
     const body = req.body;
 
@@ -78,7 +78,7 @@ router.put('/catalog/edit/:id', isAuth(), async (req, res) => {
 
 });
 
-router.delete('/catalog/details/delete/:id', isAuth(), async (req, res) => {
+router.delete('/catalog/details/delete/:id', isAuth(), isOwner(), async (req, res) => {
     const carId = req.params.id;
     try {
 
