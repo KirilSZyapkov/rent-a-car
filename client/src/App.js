@@ -14,6 +14,7 @@ import CreatNewCar from './Components/CreatCar/CreatNewCar';
 import Details from './Components/Details/Details';
 import Edit from './Components/Edit/Edit';
 import Profile from './Components/Profile/Profile';
+import ServerUnavailable from './Components/ServerUnavailable/ServerUnavailable';
 
 
 
@@ -24,7 +25,7 @@ class App extends Component {
         super(props);
 
         this.state = { isAuthenticated: sessionStorage.getItem('userName') };
-       
+
     }
 
     loggin = () => {
@@ -59,12 +60,12 @@ class App extends Component {
                             <Register loggin={this.loggin} />
                         </Route>
                         <Route path="/contacts" component={Contacts} />
-                        <Route path="/profile/:id" exact component={Profile}/>
+                        <Route path="/profile/:id" exact component={Profile} />
                         <Route path="/logout" render={(props) => {
                             this.loggout();
                             props.history.push('/');
                         }} />
-
+                        <Route path="/server-down" component={ServerUnavailable} />
 
                     </Switch>
 
