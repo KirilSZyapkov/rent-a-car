@@ -115,4 +115,5 @@ router.put('/catalog/details/cancel/:id', isAuth(), async (req, res) => {
     }
 });
 
+
 module.exports = router;

@@ -10,6 +10,7 @@ module.exports = () => (req, res, next) => {
         login,
         register,
         getUser,
+        updateUser,
         logout() {
             res.clearCookie(COOKIE_NAME);
         }
@@ -71,12 +72,29 @@ async function register(userName, email, password, rePass) {
         accessToken: createToken(user),
         userName: user.userName
     };
-    
+
     return token;
 };
 
 async function getUser(id) {
     const user = await User.findById(id).populate('myRecords').populate('bookedCars').lean();
+    return user;
+};
+
+async function updateUser(id, data) {
+    const user = await User.findById(id).populate('myRecords').populate('bookedCars');
+    const personalData = user.mySocialData;
+    const newData = Object.keys(data);
+    console.log("auth >>> "+newData)
+    console.log("auth >>> "+personalData[0].name)
+    
+    for (let i = 0; i <= personalData.length; i++) {
+        if (personalData.includes(newData[i])) {
+            user.mySocialData.push(data[i]);
+        }
+    }
+
+    await user.save();
     return user;
 };
 

@@ -6,6 +6,7 @@ const schema = new Schema({
     hashPassword: { type: String, required: true },
     bookedCars: [{ type: Schema.Types.ObjectId, ref: 'Item' }],
     myRecords: [{ type: Schema.Types.ObjectId, ref: 'Item' }],
+    mySocialData:[]
 });
 
 module.exports = model('User', schema);

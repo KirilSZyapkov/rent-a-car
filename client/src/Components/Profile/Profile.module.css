@@ -34,10 +34,6 @@
     
 }
 
-.profile_contacts i {
-    font-size: 22px;
-}
-
 .profile_list_car_list {
     display: flex;
     align-items: center;
@@ -66,4 +62,15 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+}
+
+.profile_contacts_add_details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile_contacts{
+    position: relative;
+    border: 1px solid green;
 }

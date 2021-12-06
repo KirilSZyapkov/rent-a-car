@@ -1,0 +1,53 @@
+.form_container{
+    position: absolute;
+    /* display: none; */
+    width: 100%;
+    background-color: #F1F1F1;
+    box-shadow: -1px 0px 20px 7px black;
+    padding: 10px;
+    top: -190%;
+}
+
+
+.input_container {
+    /* display: flex; */
+    width: 100%;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+
+  .input_field {
+  
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  }
+  
+  .input_field:focus {
+    border: 2px solid dodgerblue;
+  }
+  
+  .btn {
+    background-color: dodgerblue;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+
+  .btn_cancel {
+      margin-top: 4px;
+    background-color: red;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }

@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+import SocialData from './SocialData/SocialData';
 import Item from './ListCard/Item';
+import SocialForm from './SocialForm/SocialForm';
+
 import styles from './Profile.module.css';
 import * as api from '../../Services/api';
 
@@ -27,7 +29,19 @@ function Profile({
         }
         fetchData();
     }, [url]);
-   
+
+    async function addSocialData(data) {
+        const body = {
+            id: sessionStorage.getItem('userId'),
+            data: data
+        }
+        try {
+            const respons = await api.put('/profile/add-social-media', body);
+            setUser(respons);
+        } catch (err) {
+            alert(err.message);
+        }
+    }
 
     return (
         <section className={styles.profile}>
@@ -37,13 +51,13 @@ function Profile({
                     <img src="/img_avatar.png" alt="profile" />
                 </section>
                 <section className={styles.profile_contacts}>
-                    <h3>Contacts</h3>
+                    <div className={styles.profile_contacts_add_details}>
+                        <h3>Contacts</h3> <button><i class="fas fa-ellipsis-h"></i></button>
+                    </div>
 
-                    <Link to="#"><p><i class="fab fa-facebook">My Facebook</i> </p></Link>
-                    <Link to="#"><p><i class="fab fa-instagram"> My Instagram</i></p></Link>
-                    <Link to="#"><p><i class="fab fa-twitter"> My Twitter</i></p></Link>
-                    <Link to="#"><p><i class="fas fa-phone"> My Phone</i></p></Link>
-                    <Link to="#"><p><i class="far fa-envelope"> My Email</i></p></Link>
+                    <SocialForm socialData={user.mySocialData} addSocialData={addSocialData} />
+                    {user.mySocialData?.length > 0 ? user.mySocialData.map(d => <SocialData key={d.name} data={d} />) : "No data found"}
+
                 </section>
             </article>
             <section className={styles.records}>
@@ -63,7 +77,7 @@ function Profile({
 
                         <Item key={car._id} {...car} />)
                         :
-                        <p>You didn't book any car!</p>
+                        <p>You didn't booked any car!</p>
                     }
 
                 </article>
