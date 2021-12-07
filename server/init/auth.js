@@ -83,24 +83,20 @@ async function getUser(id) {
 
 async function updateUser(id, data) {
     const user = await User.findById(id).populate('myRecords').populate('bookedCars');
-    const personalData = user.mySocialData;
     const newData = Object.keys(data);
 
-    for (let a = 0; a < newData.length; a++) {
-        for (let b = 0; b < newData.length; b++) {
-            if (personalData.length === 0 || (!personalData[a].hasOwnProperty(newData[b]))) {
-                const name = newData[b];
-                const body = {
-                    [name]: data[name]
-                }
-                user.mySocialData.push(body);
-               
+    for (let b = 0; b < newData.length; b++) {
+        let body = {}
+        const name = newData[b];
+        if (data[name] !== "") {
+            body = {
+                [name]: data[name]
             }
-           
-        }
-        break;
 
+        }
+        user.mySocialData[b] = body;
     }
+
     console.log(user.mySocialData)
     await user.save();
     return user;

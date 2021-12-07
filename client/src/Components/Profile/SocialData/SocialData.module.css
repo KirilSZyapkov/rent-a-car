@@ -1,0 +1,9 @@
+.social{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.social_h2, .social_p{
+    margin: 5px;
+}

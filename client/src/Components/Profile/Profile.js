@@ -20,6 +20,8 @@ function Profile({
     }
 
     const [user, setUser] = useState({});
+    const [showSocialForm, setShowSocialForm] = useState(false);
+
 
     useEffect(() => {
         async function fetchData() {
@@ -41,6 +43,12 @@ function Profile({
         } catch (err) {
             alert(err.message);
         }
+
+        show();
+    };
+
+    function show(){
+        setShowSocialForm(!showSocialForm);
     }
 
     return (
@@ -52,10 +60,10 @@ function Profile({
                 </section>
                 <section className={styles.profile_contacts}>
                     <div className={styles.profile_contacts_add_details}>
-                        <h3>Contacts</h3> <button><i class="fas fa-ellipsis-h"></i></button>
+                        <h3>Contacts</h3> <button onClick={show}><i class="fas fa-ellipsis-h"></i></button>
                     </div>
 
-                    <SocialForm socialData={user.mySocialData} addSocialData={addSocialData} />
+                    {showSocialForm && <SocialForm socialData={user.mySocialData} addSocialData={addSocialData} show={show} />}
                     {user.mySocialData?.length > 0 ? user.mySocialData.map(d => <SocialData key={d.name} data={d} />) : "No data found"}
 
                 </section>
