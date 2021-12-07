@@ -60,14 +60,12 @@ function Details({
     }
 
     async function deleteCar(e) {
-        
+
         const url = '/catalog/details/delete/' + car._id;
         try {
 
-            const confirmed = window.confirm('Are you sure you want to delete this item?');
-            if (confirmed) {
-                await api.del(url);
-            }
+
+            const data = await api.del(url);
             history.push('/catalog');
         } catch (err) {
             alert(err.message);

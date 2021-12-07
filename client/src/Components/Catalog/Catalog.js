@@ -32,6 +32,32 @@ class Catalog extends Component {
         }
     }
 
+    async componentDidUpdate(prevStatr, prevProps) {
+
+        try {
+
+            const res = await api.get('/catalog');
+            if (prevProps.cars.length !== res.length) {
+                this.setState({ cars: res });
+            }
+
+        } catch (err) {
+            if (err.message === 'Failed to fetch') {
+                this.props.history.push('/server-down');
+            } else {
+                alert(err.message);
+            }
+        }
+    }
+
+    // async componentDidUpdate(prevStatr, prevProps) {
+    //     const res = await api.get('/catalog');
+        
+    //     if (prevProps.cars.length !== res.length) {
+    //         this.setState({ cars: res });
+    //     }
+    // }
+
     render() {
        
 
