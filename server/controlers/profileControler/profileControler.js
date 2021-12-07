@@ -13,15 +13,16 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/add-social-media', isAuth(), async (req, res) => {
-    const userID = req.body.id;
-    const data = req.body.data;
     
     try {
+        const userID = req.body.id;
+        const data = req.body.data;
         const user = await req.auth.updateUser(userID, data);
                 
         res.status(200).json(user);
     } catch (err) {
-        res.status(404).json({ message: err.message });
+        console.log(err)
+        // res.status(404).json({ message: err.message });
     }
 })
 
