@@ -53,7 +53,7 @@ const Register = ({ loggin }) => {
                 <input className={styles.form_register} type="password" placeholder="Repeat Password" name="rePass" />
 
 
-                <p>By creating an account you agree to our <a href="#">Terms and Privacy</a>.</p>
+                <p>By creating an account you agree to our <p>Terms and Privacy</p>.</p>
 
                 <div className={styles.register_clearfix}>
                     <Link to="/"><button type="button" className={styles.cancelbtn}>Cancel</button></Link>

@@ -64,9 +64,9 @@ function Details({
         const url = '/catalog/details/delete/' + car._id;
         try {
 
-
-            const data = await api.del(url);
+            await api.del(url);
             history.push('/catalog');
+            
         } catch (err) {
             alert(err.message);
         }
