@@ -16,11 +16,12 @@ async function request(url, options) {
             const data = await respons.json();
             return data;
         } catch (err) {
+            
             return respons;
         }
 
     } catch (err) {
-               
+        console.log(err.status)
         throw err;
     }
 }

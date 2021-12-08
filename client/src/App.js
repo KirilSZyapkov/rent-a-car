@@ -15,6 +15,7 @@ import Details from './Components/Details/Details';
 import Edit from './Components/Edit/Edit';
 import Profile from './Components/Profile/Profile';
 import ServerUnavailable from './Components/ServerUnavailable/ServerUnavailable';
+import NotFound from './Components/404/NotFound';
 
 
 
@@ -66,6 +67,7 @@ class App extends Component {
                             props.history.push('/');
                         }} />
                         <Route path="/server-down" component={ServerUnavailable} />
+                        <Route path="*" component={NotFound} />
 
                     </Switch>
 

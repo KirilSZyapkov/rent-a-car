@@ -24,6 +24,7 @@ class Catalog extends Component {
             this.setState({ cars: res });
             
         } catch(err){
+            
             if(err.message === 'Failed to fetch'){
                 this.props.history.push('/server-down');
             } else {
@@ -43,6 +44,7 @@ class Catalog extends Component {
 
         } catch (err) {
             if (err.message === 'Failed to fetch') {
+                
                 this.props.history.push('/server-down');
             } else {
                 alert(err.message);
