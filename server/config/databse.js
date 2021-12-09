@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const { DB } = require('../init/init');
+const init = require('../init/init');
 
 module.exports = (app) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(DB, {
+        mongoose.connect(init.DB, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

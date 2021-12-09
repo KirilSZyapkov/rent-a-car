@@ -11,6 +11,7 @@ router.get('/catalog', async (req, res) => {
         res.status(200).json(data);
 
     } catch (err) {
+        console.log(err)
         const errList = error(err);
         res.status(400).json({ message: errList });
     }
@@ -56,6 +57,7 @@ router.get('/catalog/edit/:id', isAuth(), async (req, res) => {
         res.status(200).json(data);
 
     } catch (err) {
+       
         const errList = error(err);
         res.status(404).json({ message: errList });
     }

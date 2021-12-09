@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import OutOfStock from '../OutOfStock/OutOfStock';
 
 import styles from './Catalog.module.css';
 import Card from './CatalogCard/Card';
@@ -14,18 +15,18 @@ class Catalog extends Component {
         this.state = {
             cars: []
         };
-        
+
     }
 
     async componentDidMount() {
-        try{
+        try {
 
             const res = await api.get('/catalog');
             this.setState({ cars: res });
-            
-        } catch(err){
-            
-            if(err.message === 'Failed to fetch'){
+
+        } catch (err) {
+
+            if (err.message === 'Failed to fetch') {
                 this.props.history.push('/server-down');
             } else {
                 alert(err.message);
@@ -44,7 +45,7 @@ class Catalog extends Component {
 
         } catch (err) {
             if (err.message === 'Failed to fetch') {
-                
+
                 this.props.history.push('/server-down');
             } else {
                 alert(err.message);
@@ -54,23 +55,30 @@ class Catalog extends Component {
 
     // async componentDidUpdate(prevStatr, prevProps) {
     //     const res = await api.get('/catalog');
-        
+
     //     if (prevProps.cars.length !== res.length) {
     //         this.setState({ cars: res });
     //     }
     // }
 
     render() {
-       
+
 
         return (
-            <section className={styles.catalog_container}>
-                {this.state.cars.length>0 ?this.state.cars.map(x =>
-                    <Card key={x._id} {...x} />
-                ) :
-                <h1>Loading ...</h1>}
+            <>
+                {this.state.cars.length !== 0 ?
+                    <section className={styles.catalog_container}>
+                        {this.state.cars.length > 0
+                            ?
+                            this.state.cars.map(x => <Card key={x._id} {...x} />)
+                            :
+                            <h1>Loading ...</h1>}
+                    </section>
+                    :
+                    <OutOfStock />
+                }
+            </>
 
-            </section>
 
         )
     }
