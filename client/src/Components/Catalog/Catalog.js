@@ -15,7 +15,7 @@ class Catalog extends Component {
         this.state = {
             cars: []
         };
-
+        this.isEmpty = false;
     }
 
     async componentDidMount() {
@@ -23,6 +23,9 @@ class Catalog extends Component {
 
             const res = await api.get('/catalog');
             this.setState({ cars: res });
+            if (this.state.cars.length === 0) {
+                this.isEmpty = true;
+            }
 
         } catch (err) {
 
@@ -66,7 +69,7 @@ class Catalog extends Component {
 
         return (
             <>
-                {this.state.cars.length !== 0 ?
+                {!this.isEmpty ?
                     <section className={styles.catalog_container}>
                         {this.state.cars.length > 0
                             ?
