@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     width: 100%;
     padding: 45px;
-    justify-content: center;
+    justify-content: flex-end;
     
     
 }
@@ -25,7 +25,7 @@
     height: 30px;
     border: none;
     font-size: 15px;
-    border-radius: 10px;
+    
     cursor: pointer;
 }
 
@@ -40,11 +40,11 @@
 
 .container_login{
     text-align: center;
-    color: wheat;
 }
 
 .container_login a{
     color: red;
+    /* font-weight: bold; */
 }
 
 .form_register {
@@ -54,4 +54,6 @@
     margin: 7px 0px;
     border-radius: 20px;
     border: none;
+    background-color: lightgray;
+    opacity: 0.8;
 }

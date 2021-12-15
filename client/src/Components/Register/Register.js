@@ -60,7 +60,7 @@ const Register = ({ loggin }) => {
                     <button type="submit" className={styles.signupbtn}>Sign Up</button>
                 </div>
                 <div className={styles.container_login}>
-                    <p>If you have registration <Link to="/user/login">Login.</Link></p>
+                    <p>If you have registration <Link to="/user/login">Login</Link></p>
                 </div>
 
             </form>

@@ -16,7 +16,7 @@
 
 .form_section{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     background-image: url("../../images/bg.jpg");
     
 }

@@ -48,7 +48,7 @@ const Login = ({ loggin }) => {
                     <button type="submit" className={styles.signupbtn}>Sign Up</button>
                 </div>
                 <div className={styles.container_signin}>
-                    <p>Already have an account? <Link to="/user/register">Sign in.</Link></p>
+                    <p>Already have an account? <Link to="/user/register">Sign in</Link></p>
                 </div>
 
             </form>
