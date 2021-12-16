@@ -80,3 +80,8 @@ background-size: cover;
 .specification_details_container ul{
     padding: 0;
 }
+
+.user_link a{
+    text-decoration: none;
+    color: black;
+}

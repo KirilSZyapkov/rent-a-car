@@ -15,6 +15,7 @@ import Details from './Components/Details/Details';
 import Edit from './Components/Edit/Edit';
 import Profile from './Components/Profile/Profile';
 import ServerUnavailable from './Components/ServerUnavailable/ServerUnavailable';
+import User from './Components/User/User';
 import NotFound from './Components/404/NotFound';
 
 
@@ -60,6 +61,7 @@ class App extends Component {
                         <Route path="/user/register" >
                             <Register loggin={this.loggin} />
                         </Route>
+                        <Route path="/user/:id" component={User} />
                         <Route path="/contacts" component={Contacts} />
                         <Route path="/profile/:id" exact component={Profile} />
                         <Route path="/logout" render={(props) => {
@@ -67,6 +69,7 @@ class App extends Component {
                             props.history.push('/');
                         }} />
                         <Route path="/server-down" component={ServerUnavailable} />
+
                         <Route path="*" component={NotFound} />
 
                     </Switch>

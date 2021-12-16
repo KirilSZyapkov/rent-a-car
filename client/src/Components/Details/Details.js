@@ -66,7 +66,7 @@ function Details({
 
             await api.del(url);
             history.push('/catalog');
-            
+
         } catch (err) {
             alert(err.message);
         }
@@ -88,6 +88,7 @@ function Details({
 
                 <div className={styles.details_head_container}>
                     <h3>{car.carModel}</h3>
+
                 </div>
                 <div className={styles.img_container}>
                     <img src={car.imgURL} alt="Avatar" />
@@ -124,8 +125,12 @@ function Details({
                                 </>
                                 :
                                 ''}
+
+
                             <Link to="/catalog"><button className={styles.backbtn}>Back</button></Link>
 
+                            {userId !== car._owner ? <p className={styles.user_link}><Link to={`/user/${car._owner}`}>Contact owner</Link></p> : ''}
+                            
                             {(userId === car._owner) ?
                                 <>
 
