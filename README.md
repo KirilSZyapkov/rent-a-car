@@ -45,3 +45,5 @@ For this project i used React JS for the front-end and Node JS for the server.
 This was a 2 month long project built during my third module at JS Web Module in Softuni. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.
 
 At the end of the day, the technologies implemented in this project are React, React-Router 5.0, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the create-react-app boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes.
+
+WebSite: https://rent-a-car-f00fa.web.app/
